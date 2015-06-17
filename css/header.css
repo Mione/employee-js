@@ -1,0 +1,48 @@
+header > nav{
+  height: 100px;
+  background-color: white;
+  padding: 30px;
+  box-sizing: border-box;
+	border-bottom:1px solid #cecece;
+}
+.nav__hamburger{
+  float: left;
+}
+.nav__pills{
+	float:right;
+}
+.nav__hamburger li{
+	display:inline-block;
+}
+.nav__title{
+  width: 250px;
+  position: absolute;
+  left: 50%;
+  margin-left: -160px;
+  font-size: 24px;
+  padding-left: 30px;
+	background:url(../images/logo.jpg) no-repeat left 7px;
+}
+.nav__pill{
+	display:inline-block;
+}
+
+header > section {
+	background-color: #E3E3E3;
+}
+.search__wrapper{
+  width: 970px;
+  margin: 0px auto;
+	height: 150px;
+  padding: 40px 0px 0px 0px;
+  box-sizing: border-box;
+}
+.search__wrapper form{
+	margin-bottom:30px;
+}
+.search__wrapper button{
+	float:right;
+}
+.search__adv-filter{
+	text-align: center;
+}

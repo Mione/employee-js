@@ -1,0 +1,23 @@
+/*move to normalize.css*/
+ul{
+	list-style-type: none;
+	margin:0px;
+}
+
+.container header{
+	width:100%;
+	background-color:coral;
+	margin-bottom: 30px;
+}
+
+.container > section{
+	width:970px;
+	margin:0px auto;
+}
+
+/*media*/
+@media only screen and (max-width: 970px) {
+ .container > section{
+		width:100%;
+ }
+}

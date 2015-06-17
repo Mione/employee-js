@@ -4,6 +4,7 @@ html {
     color: #222;
     font-size: 1em;
     line-height: 1.4;
+		font-family:'Lato', sans-serif;
 }
 
 ::-moz-selection {
@@ -56,11 +57,29 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-.container{  
+ul{
+	padding:0px;
+	margin:0px;
+	list-style: none;
 }
-
-
-
+a{
+	text-decoration: none;
+}
+th{
+	  text-align: left;
+}
+.th__tools{
+	width:100px;
+}
+.table__title{
+	  float: left;
+}
+.table-filter{
+	float:right;
+}
+.container > section table{
+	width:100%;
+}
 
 
 
