@@ -1,0 +1,160 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <!--[if lt IE 9]
+        NO!
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+        <![endif]-->
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class = "container">
+          <header>
+            <nav>
+              <div class="nav__hamburger">
+                <ul>
+                  <li>Item1</li>
+                  <li>Item2</li>
+                  <li>Item3</li>
+                  <li>Item4</li>
+                </ul>
+              </div>
+              <span class="nav__title">Work Force Planning</span>
+              <div class="nav__pills">
+                <div class="nav__pill"></div>
+                <div class="nav__pill nav__pill--profile"></div>
+              </div>
+            </nav>
+            <section>
+              <form>                
+                <input type="text" name= "name" placeholder = "Name"/>
+                
+                <select>
+                  <option default>Alocation Status</option>
+                  <option>Allocated</option>
+                  <option>Not allocated</option>
+                  <option>Some other option</option>
+                </select>
+                
+                <select>
+                  <option default>Job Title(s)</option>
+                  <option>Junior</option>
+                  <option>Senior</option>
+                  <option>Bo$$</option>
+                </select>
+                
+                <button role = "submit">SEARCH</button>
+              </form>
+              
+              <a href="#">Advanced filters</a>
+            </section>
+          </header><!--//container header-->
+          
+          <section>
+            <nav>
+              <div class="table__title"></div>
+              <form>
+                <select>
+                  <option>Filter by: Multiple selection</option>
+                  <option>Filter by: Full Name</option>
+                </select>
+                
+                <select>
+                  <option>Show: 10 entries</option>
+                  <option>Show: 100 entries</option>
+                </select>
+              </form>
+            </nav>
+            <table>
+              <thead>
+                <th>Full Name</th>
+                <th>Job Title</th>
+                <th>Grade</th>
+                <th>Allocation status</th>
+                <th>Project</th>
+                <th>Date of booking</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John Doe</td>
+                  <td>UI Developer</td>
+                  <td>Senior engineer</td>
+                  <td>Allocated</td>
+                  <td>Trinity Mirror</td>
+                  <td>10/05/2014
+                  <span class="row__tools"></span>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>John Doe</td>
+                  <td>UI Developer</td>
+                  <td>Senior engineer</td>
+                  <td>Allocated</td>
+                  <td>Trinity Mirror</td>
+                  <td>10/05/2014
+                  <span class="row__tools"></span>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>John Doe</td>
+                  <td>UI Developer</td>
+                  <td>Senior engineer</td>
+                  <td>Allocated</td>
+                  <td>Trinity Mirror</td>
+                  <td>10/05/2014
+                  <span class="row__tools"></span>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>John Doe</td>
+                  <td>UI Developer</td>
+                  <td>Senior engineer</td>
+                  <td>Allocated</td>
+                  <td>Trinity Mirror</td>
+                  <td>10/05/2014
+                  <span class="row__tools"></span>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <nav>
+                  <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>...</li>
+                  </ul>
+                </nav>
+              </tfoot>
+            </table>
+          </section><!--//container main section-->
+          <footer></footer>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
