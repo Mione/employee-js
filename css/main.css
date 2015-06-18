@@ -1,7 +1,7 @@
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 
 html {
-    color: #222;
+    color: gray;
     font-size: 1em;
     line-height: 1.4;
 		font-family:'Lato', sans-serif;
@@ -64,6 +64,7 @@ ul{
 }
 a{
 	text-decoration: none;
+  color: gray;
 }
 th{
 	  text-align: left;
@@ -87,7 +88,12 @@ th{
   border-bottom: 1px solid #cecece;
 }
 .tbl-row__content{
-    padding: 20px 0px;
+  padding: 20px 0px;
+  border-bottom: 1px solid #cecece;
+  margin-bottom: -1px;
+}
+.employee-tbl {
+  margin-bottom:60px;
 }
 .employee-tbl li{
   padding-left:10px;
@@ -147,12 +153,38 @@ background: url(../images/arrow-down.jpg) no-repeat 0px 0px;
 .row-content__action .btn:last-child{
   top:-7px;
 }
+/* pagination component, should be able to move this one out to its own file if need be */
+.pagination{
+    text-align: center;
+}
 
+.pagination ul li{
+display: inline-block;
+  text-align: center;
+  min-width: 47px;
+  border: 1px solid #cecece;
+  border-right: none;
+  margin-right: -3px;/*whitespace fix*/
+}
+.pagination ul li a{
+  display: block;
+  padding: 10px;
+}
 
-
-
-
-
+.pagination__back{
+    border-radius: 4px 0px 0px 4px;
+}
+.pagination .pagination__forward{
+  border-radius:0px 4px 4px 0px;
+  border-right:1px solid #cecece;
+  margin-left: -1px;
+}
+.pagination .active a{
+  background-color:#e3e3e3;
+}
+.pagination a:hover{
+  background-color:lightgray;  
+}
 /* ==========================================================================
    Media Queries
    ========================================================================== */
