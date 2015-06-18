@@ -11,13 +11,20 @@ ul{
 }
 
 .container > section{
-	width:970px;
+  width: 1265px;
 	margin:0px auto;
+	padding-bottom:200px;
 }
 
 /*media*/
-@media only screen and (max-width: 970px) {
- .container > section{
+@media only screen and (max-width: 996px) {
+ .container > section, .container .search__wrapper{
 		width:100%;
+ }
+}
+@media only screen and (max-width: 550px) {
+.container .search__wrapper button,.container .search__wrapper input{
+		width:100%;
+		box-sizing: border-box;
  }
 }

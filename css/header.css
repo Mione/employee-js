@@ -7,10 +7,32 @@ header > nav{
 }
 .nav__hamburger{
   float: left;
+    margin-top: 8px;
+    position:relative;
+}
+.hamburger__icon{
+  display:block;
+  background:url(../images/hamburger.jpg) no-repeat;
+  width: 30px;
+  height: 20px;
+}
+span.hamburger__icon:hover {
+  border: 1px solid #cecece;
+  padding: 10px;
+  background-position: 8px;
+  border-radius: 5px;
+  cursor:pointer;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+.nav__hamburger ul{
+  display:none;
 }
 .nav__pills{
 	float:right;
+  margin-top: -5px;
 }
+
 .nav__hamburger li{
 	display:inline-block;
 }
@@ -24,16 +46,49 @@ header > nav{
 	background:url(../images/logo.jpg) no-repeat left 7px;
 }
 .nav__pill{
-	display:inline-block;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  background-color: #B5B5B5;
+  vertical-align: top;
+  font-size: 36px;
+  font-style: italic;
+  font-family: "Times New Roman";
+  border-radius: 30px;
+  padding-left: 18px;
+  box-sizing: border-box;
+  color: white;
+  position:relative;
+  margin-right: 10px;
 }
-
+.nav__pill--info:after{
+  content: "3";
+  position: absolute;
+  top: 0px;
+  background-color: #D95330;
+  border-radius: 30px;
+  font-size: 17px;
+  width: 23px;
+  height: 23px;
+  left: 33px;
+  box-sizing: border-box;
+  padding-left: 7px;
+  font-style: normal;
+}
+.nav__pill--profile{
+  background: url('../images/avatar.png') no-repeat -4px -16px;
+}
+.nav__pill:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
 header > section {
 	background-color: #E3E3E3;
 }
 .search__wrapper{
-  width: 970px;
+  width: 1265px;
   margin: 0px auto;
-	height: 150px;
+	height: 190px;
   padding: 40px 0px 0px 0px;
   box-sizing: border-box;
 }

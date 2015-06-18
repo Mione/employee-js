@@ -30,6 +30,7 @@
           <header>
             <nav  class="clearfix">
               <div class="nav__hamburger">
+                <span class="hamburger__icon"></span>
                 <ul>
                   <li>Item1</li>
                   <li>Item2</li>
@@ -39,38 +40,29 @@
               </div>
               <div class="nav__title">Work Force Planning</div>
               <div class="nav__pills">
-                <div class="nav__pill">asdasd</div>
-                <div class="nav__pill nav__pill--profile">asd</div>
+                <div class="nav__pill nav__pill--info">i</div>
+                <div class="nav__pill nav__pill--profile"></div>
               </div>
             </nav>
             <section>
 							<div class="search__wrapper">
-								<form class="clearfix">                
-									<input type="text" name= "name" class="form-control" placeholder = "Name"/>
-									
-									<div class="btn-group">
-										<button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Allocation Status<span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu">
-											<li><a href="#">Allocated</a></li>
-											<li><a href="#">Not Allocated</a></li>
-											<li><a href="#">Some other option</a></li>
-										</ul>
-									</div>
-									
-									<div class="btn-group">
-										<button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Job Title(s)<span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu">
-											<li><a href="#">Senior Developer</a></li>
-											<li><a href="#"></a>Engineer</li>
-											<li><a href="#">Senior Consultant</a></li>
-										</ul>
-									</div>
-									
-									<button role = "submit" class="btn btn-search">SEARCH</button>
+								<form class="clearfix">
+                  
+									<input type="text" name= "name" class="form__component" placeholder = "Name"/>
+									<select class="form__component">
+                    <option>optiune de test</option>
+                    <option>optiune de test</option>
+                    <option>optiune de test</option>
+                    <option>optiune de test</option>
+                  </select>
+                  
+									<select class="form__component">
+                    <option>optiune de test</option>
+                    <option>optiune de test</option>
+                    <option>optiune de test</option>
+                    <option>optiune de test</option>
+                  </select>
+                  <button name ="search"class=" btn btn-search form__component form__component--last">SEARCH</button>
 								</form>
 								<div class="search__adv-filter">
 									<a href="#">Advanced filters</a>
@@ -84,27 +76,19 @@
             <nav>
               <span class="table__title">Employees</span>
               <form class="table-filter">
-									<div class="btn-group">
-										<button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Job Title(s)<span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu">
-											<li><a href="#">Senior Developer</a></li>
-											<li><a href="#"></a>Engineer</li>
-											<li><a href="#">Senior Consultant</a></li>
-										</ul>
-									</div>
-                
-									<div class="btn-group">
-										<button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Job Title(s)<span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu">
-											<li><a href="#">Senior Developer</a></li>
-											<li><a href="#"></a>Engineer</li>
-											<li><a href="#">Senior Consultant</a></li>
-										</ul>
-									</div>
+                  <select class="form__component">
+                    <option>optiune de test</option>
+                    <option>optiune de test</option>
+                    <option>optiune de test</option>
+                    <option>optiune de test</option>
+                  </select>
+                  
+									<select class="form__component">
+                    <option>optiune de test</option>
+                    <option>optiune de test</option>
+                    <option>optiune de test</option>
+                    <option>optiune de test</option>
+                  </select>
               </form>
 							<div class="clearfix"></div>
             </nav>
@@ -129,8 +113,10 @@
                   <li>Allocated</li>
                   <li>Trinity Mirror</li>
                   <li class="toolbox">10/05/2014
-                    <span class="toolbox__pencil"></span>
-                    <span class="toolbox__arrow toolbox__arrow--open"></span>
+                    <div class="toolbox__controlls">
+                      <span class="toolbox__pencil"></span>
+                      <span class="toolbox__arrow toolbox__arrow--open"></span>
+                    </div>
                   </li>
                 </ul>
                 <ul class="tbl-row__content open">
@@ -154,8 +140,8 @@
                   <li></li>
                   <li></li>
                   <li class = "row-content__action">
-                    <button role = "submit" class="btn">Active button</button>
-                    <button role = "submit" class="btn">Inactive button</button>
+                    <button role = "submit" class="btn btn-warning">Active button</button>
+                    <button role = "submit" class="btn btn-inactive" disabled>Inactive button</button>
                   </li>
                 </ul>
               </div>
@@ -168,8 +154,10 @@
                   <li>Allocated</li>
                   <li>Trinity Mirror</li>
                   <li class="toolbox">10/05/2014
-                    <span class="toolbox__pencil"></span>
-                    <span class="toolbox__arrow toolbox__arrow--open"></span>
+                    <div class="toolbox__controlls">
+                      <span class="toolbox__pencil"></span>
+                      <span class="toolbox__arrow toolbox__arrow--open"></span>
+                    </div>
                   </li>
                 </ul>
                 <ul class="tbl-row__content open">
@@ -186,8 +174,8 @@
                   <li></li>
                   <li></li>
                   <li class = "row-content__action">
-                    <button role = "submit" class="btn">Active button</button>
-                    <button role = "submit" class="btn">Inactive button</button>
+                    <button role = "submit" class="btn btn-warning">Active button</button>
+                    <button role = "submit" class="btn btn-inactive" disabled>Inactive button</button>
                   </li>
                 </ul>
               </div>
@@ -203,6 +191,10 @@
                    <li><a href="#">3</a></li>
                    <li><a href="#">4</a></li>
                    <li><a href="#">5</a></li>
+                   <li><a href="#">6</a></li>
+                   <li><a href="#">7</a></li>
+                   <li><a href="#">8</a></li>
+                   <li><a href="#">...</a></li>
                    <li class="pagination__forward"><a href="#"><span>&raquo;</span></a></li>
                 </ul>
 							</div>
