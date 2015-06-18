@@ -30,17 +30,19 @@
   width:auto;
 
 }
-.btn-warning{
-  color:#DB532D;
-  border-color:#DB532D;
-}
-.icon-search{
+.btn-search span{
   background: #DB532D url('../images/lupa.jpg') no-repeat;
   height: 20px;
   width: 20px;
   position: absolute;
-  left: 55px;
+  left: 100px;
+  
 }
+.btn-warning{
+  color:#DB532D;
+  border-color:#DB532D;
+}
+
 .caret{
   display: inline-block;
   width: 0;
@@ -64,7 +66,10 @@
   outline: none;
   border: 1px solid #d4d4d4;
 }
-
+.form__component--last:hover{
+  border-color:coral;
+}
 .form__component.form__component--last{
   margin-right: 0px;
+  padding-left: 90px;
 }

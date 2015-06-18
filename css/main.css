@@ -80,6 +80,9 @@ th{
 .table-filter{
 	float:right;
 }
+.table-filter .form__component{
+  width:auto;
+}
 .table-filter .form__component:last-child{
   margin-right:0px;
 }

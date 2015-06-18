@@ -50,19 +50,20 @@
                   
 									<input type="text" name= "name" class="form__component" placeholder = "Name"/>
 									<select class="form__component">
-                    <option>optiune de test</option>
-                    <option>optiune de test</option>
-                    <option>optiune de test</option>
-                    <option>optiune de test</option>
+                    <option selected disabled value = "Allocation Status">Allocation Status</option>
+                    <option value ="Allocated">Allocated</option>
+                    <option value ="Not allocated">Not allocated</option>
+                    <option value = "Some other option">Some other option</option>
                   </select>
                   
 									<select class="form__component">
-                    <option>optiune de test</option>
-                    <option>optiune de test</option>
-                    <option>optiune de test</option>
-                    <option>optiune de test</option>
+                    <option selected disabled value="Job Title(s)">Job Title(s)</option>
+                    <option value = "Engineer">Engineer</option>
+                    <option value = "Senior Engineer">Senior Engineer</option>
+                    <option value = "Consultant">Consultant</option>
+                    <option value = "Senior Consultant">Consultant</option>
                   </select>
-                  <button name ="search"class=" btn btn-search form__component form__component--last">SEARCH</button>
+                  <button name ="search"class=" btn btn-search form__component form__component--last"><span></span>SEARCH</button>
 								</form>
 								<div class="search__adv-filter">
 									<a href="#">Advanced filters</a>
@@ -76,18 +77,18 @@
             <nav>
               <span class="table__title">Employees</span>
               <form class="table-filter">
+                <label >Filter by:</label>
                   <select class="form__component">
-                    <option>optiune de test</option>
-                    <option>optiune de test</option>
-                    <option>optiune de test</option>
-                    <option>optiune de test</option>
+                    <option selected value ="Multiple selection">Multiple selection</option>
+                    <option value ="Single selection">Single selection</option>
+                    <option value ="Some other selection">Some other selection</option>
                   </select>
-                  
+                <label >Show:</label>
 									<select class="form__component">
-                    <option>optiune de test</option>
-                    <option>optiune de test</option>
-                    <option>optiune de test</option>
-                    <option>optiune de test</option>
+                    <option  value = "1 entries">1 entry</option>
+                    <option selected value = "10 entries">10 entries</option>
+                    <option  value = "100 entries">100 entries</option>
+                    <option  value = "1000 entries">1000 entries</option>
                   </select>
               </form>
 							<div class="clearfix"></div>
