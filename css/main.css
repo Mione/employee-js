@@ -81,9 +81,72 @@ th{
 	width:100%;
 }
 
+.tbl-row__header{
+  padding: 15px 0px;
+  border-top: 1px solid #cecece;
+  border-bottom: 1px solid #cecece;
+}
+.tbl-row__content{
+    padding: 20px 0px;
+}
+.employee-tbl li{
+  padding-left:10px;
+  box-sizing:border-box;
+}
+.employee-tbl__header ul {
+    padding: 10px 0px;
+  background-color: lightgray;
+}
+.tbl-row__content.open {
+  border-top: 1px solid coral;
+  margin-top: -1px;
+}
+.employee-tbl__header li, .tbl-row__header li, .tbl-row__content > li{
+  display:inline-block;
+  width:16%;
+}
+/*upping the specificity*/
+.employee-tbl__row .tbl-row__header .toolbox,.tbl-row__content li.row-content__action{
+  width:178px;
+}
+.toolbox span{
+  height: 22px;
+  width: 22px;
+  display: inline-block;
+  border-radius: 3px;
+  position: relative;
+  left: 19px;
+  top: 3px;
+  margin-right: 12px;
+  box-sizing: border-box;
+}
+.toolbox__pencil{
+    background: url(../images/pencil.png) no-repeat 2px;
+}
+.toolbox__pencil:hover{
+  cursor: pointer;
+    border:1px solid #cecece;
+}
 
-
-
+.toolbox__arrow:hover{
+  cursor: pointer;
+  border:1px solid #cecece;
+}
+.toolbox__arrow--open{
+    background: url(../images/arrow-up.jpg) no-repeat;
+}
+.toolbox__arrow--closed{
+background: url(../images/arrow-down.jpg) no-repeat 0px 0px;
+}
+.row-content__action .btn{
+  position:relative;
+}
+.row-content__action .btn:first-child{
+  top:-27px;
+}
+.row-content__action .btn:last-child{
+  top:-7px;
+}
 
 
 
