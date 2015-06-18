@@ -94,6 +94,9 @@ th{
   padding: 15px 0px;
   border-top: 1px solid #cecece;
 }
+.tbl-row__header--last{
+  border-bottom:1px solid #cecece;
+}
 .tbl-row__content{
   padding: 20px 0px;
   border-bottom: 1px solid #cecece;
