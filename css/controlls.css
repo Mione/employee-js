@@ -86,10 +86,16 @@
   outline: none;
   border: 1px solid #d4d4d4;
 }
+
 .form__component--last:hover{
   border-color:coral;
 }
+
 .form__component.form__component--last{
   margin-right: 0px;
   padding-left: 90px;
+}
+
+[data-editable] input {
+height:16px;
 }
