@@ -1,4 +1,4 @@
-/*no more bootstrap rip-offs ahead :d*/
+/* Buttons */
 .btn{
   position: relative;
   display: inline-block;
@@ -38,6 +38,44 @@
 .toolbox__controlls{
   float:right;
 }
+/* END Buttons */
+
+/*filter options*/
+.table-filter__lbl-drop{
+  display: inline-block;
+  position: relative;
+  padding-left: 70px;
+  border-radius: 10px;
+}
+
+.table-filter__lbl-drop label{
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+  left: 15px;
+  color: lightgray;
+}
+
+.table-filter{
+	float:right;
+}
+.table-filter .form__component{
+  width:auto;
+  border:none;
+  font-weight: bold;
+  margin: 0px;
+}
+.table-filter__lbl-drop{
+  border:1px solid #cecece;
+  margin-right: 20px;
+}
+.table-filter__lbl-drop:nth-child(2){
+  padding-left:50px;
+  margin-right: 0px;
+}
+/* END filter options*/
+
+
 .form__component{
   width: 300px;
   margin-right: 18px;
