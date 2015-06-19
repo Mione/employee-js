@@ -6,6 +6,9 @@
             $editToggle = $('.toolbox__pencil'),
             inEditMode = false;
         //functions
+        function openRow () {
+          $this = $(this);
+        }
         //events
         $arrowToggle.on('click', function () {
             var $this = $(this),
@@ -26,12 +29,9 @@
         });
         $editToggle.on('click', function () {
             var $this = $(this),
-                $details = $this.closest('.tbl-row__header').siblings('.tbl-row__content').find('.row-content__details');
+                $details = $this.closest('.employee-tbl__row').find('[data-editable]');
             if (inEditMode === false) {
-                var $listItems = $.makeArray($details.children()),
-                    $base = $('<ul>');
-                $base.addClass('row-content__details');
-                $.each($listItems, function (index, item) {
+                $.each($details, function (index, item) {
                     var text = $(item).text(),
                         $li = $('<li>'),
                         $input = $('<input>').attr({
@@ -39,17 +39,16 @@
                             value : text,
                             name : 'editableInput'
                         });
+                    $li.attr('data-editable', '');
                     $input.appendTo($li);
-                    $li.appendTo($base);
+                    $($details[index]).replaceWith($li);
                 });
-                $details.empty();
-                $details.replaceWith($base);
                 inEditMode = true;
             } else {
-                var editableInputs = $("[name = 'editableInput']");
-                $.each(editableInputs, function (index, item) {
-                    var value = $(item).val();
-                    $(item).replaceWith(value);
+                $.each($details, function (index, item) {
+                    var value = $(item).find('input').val();
+                    $(item).find('input').replaceWith(value);
+
                 });
                 inEditMode = false;
             }
