@@ -1,12 +1,4 @@
-/*bootstrap rip-offs ahead :d*/
-.btn-group {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-}
-.btn-group .btn{
-	padding: 6px 8px 6px 20px;
-}
+/*no more bootstrap rip-offs ahead :d*/
 .btn{
   position: relative;
   display: inline-block;
@@ -43,16 +35,6 @@
   border-color:#DB532D;
 }
 
-.caret{
-  display: inline-block;
-  width: 0;
-  height: 0;
-  margin-left: 60px;
-  vertical-align: middle;
-  border-top: 4px dashed;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-}
 .toolbox__controlls{
   float:right;
 }
