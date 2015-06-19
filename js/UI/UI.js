@@ -9,6 +9,14 @@
         function openRow () {
           $this = $(this);
         }
+        
+        function isDate($obj) {
+            if ($obj.data('editable') == 'date') {
+                return 'date';
+            } else {
+                return 'text';
+            }
+        }
         //events
         $arrowToggle.on('click', function () {
             var $this = $(this),
@@ -32,16 +40,17 @@
                 $details = $this.closest('.employee-tbl__row').find('[data-editable]');
             if (inEditMode === false) {
                 $.each($details, function (index, item) {
+
                     var text = $(item).text(),
-                        $li = $('<li>'),
-                        $input = $('<input>').attr({
-                            type : 'text',
+                        type = isDate($(item));
+                    //debugger;
+                    var $input = $('<input>').attr({
+                            type : type,
                             value : text,
                             name : 'editableInput'
                         });
-                    $li.attr('data-editable', '');
-                    $input.appendTo($li);
-                    $($details[index]).replaceWith($li);
+                    $($details[index]).html($input);
+
                 });
                 inEditMode = true;
             } else {

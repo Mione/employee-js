@@ -66,8 +66,15 @@ a{
 	text-decoration: none;
   color: gray;
 }
-th{
-	  text-align: left;
+.toolbox{
+    float: right;
+}
+.toolbox__date{
+  float:left;
+}
+.toolbox__date input{
+  width:145px;
+  height: 21px;
 }
 .th__tools{
 	width:100px;
@@ -86,6 +93,7 @@ th{
   padding: 15px 0px;
   border-top: 1px solid #cecece;
 }
+
 .tbl-row__header--last{
   border-bottom:1px solid #cecece;
 }
@@ -118,6 +126,7 @@ th{
 .tbl-row__content > li{
   display:inline-block;
   width:16%;
+  vertical-align: top;
 }
 .tbl-row__content li ul li{
   padding-left:0px;
