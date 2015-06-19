@@ -1,17 +1,23 @@
 (function ($) {
     'use strict';
     $(document).ready(function () {
-    //var declaration
+        //var declaration
         var $arrowToggle = $('.toolbox__arrow'),
             $editToggle = $('.toolbox__pencil'),
-            inEditMode = false;
+            inEditMode = false,
+            employees = window.data;
         //functions
-        function openRow () {
-          $this = $(this);
+        //TODO continue with building the data.
+        function generateData(list) {
+            $.each(list, function (index, item) {
+                var base = $('<div>').addClass('employee-tbl__row clearfix'),
+                    baseheader = $('<ul>').addClass('tbl-row__header'),
+                    baseContent = $('<ul>').addClass('tbl-row__content closed'),
+                    $li = $('<li>').attr('data-editable', '').text();
+            });
         }
-        
         function isDate($obj) {
-            if ($obj.data('editable') == 'date') {
+            if ($obj.data('editable') === 'date') {
                 return 'date';
             } else {
                 return 'text';
@@ -50,7 +56,6 @@
                             name : 'editableInput'
                         });
                     $($details[index]).html($input);
-
                 });
                 inEditMode = true;
             } else {

@@ -185,7 +185,7 @@ background: url(../images/arrow-down.jpg) no-repeat 0px 0px;
 .pagination ul li{
 display: inline-block;
   text-align: center;
-  min-width: 47px;
+  min-width: 48px;
   border: 1px solid #cecece;
   border-right: none;
   margin-right: -3px;/*whitespace fix*/
