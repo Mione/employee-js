@@ -102,10 +102,6 @@ a{
 .employee-tbl {
   margin-bottom:60px;
 }
-.employee-tbl li{
-  padding-left:10px;
-  box-sizing:border-box;
-}
 .employee-tbl__header ul {
   padding: 10px 0px;
   background-color: #e3e3e3;
@@ -123,7 +119,8 @@ a{
 .tbl-row__content > li{
   display:inline-block;
   width:16%;
-  vertical-align: top;
+  padding-left:10px;
+  box-sizing:border-box;
 }
 .tbl-row__content li ul li{
   padding-left:0px;
