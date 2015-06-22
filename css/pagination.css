@@ -1,0 +1,37 @@
+/* ==========================================================================
+   Pagination component, should be easily transferable
+   ========================================================================== */
+.pagination{
+    text-align: center;
+}
+
+.pagination ul li {
+  border: 1px solid #cecece;
+  border-right: none;
+  display: inline-block;
+  text-align: center;
+  width: 48px;
+}
+
+.pagination ul li a {
+  display: block;
+  padding: 10px;
+}
+
+.pagination__back {
+  border-radius: 4px 0px 0px 4px;
+}
+
+.pagination .pagination__forward  {
+  border-radius:0px 4px 4px 0px;
+  border-right:1px solid #cecece;
+  margin-left: -1px;
+}
+
+.pagination .active a {
+  background-color:#e3e3e3;
+}
+
+.pagination a:hover {
+  background-color:lightgray;  
+}

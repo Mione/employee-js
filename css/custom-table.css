@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Custom table, using lists.
+   TODO change tbl-row__content structure to allow multiple rows to be added
+   in without changing the structure in two places.
+   ========================================================================== */
+
+.th__tools {
+	width:100px;
+}
+.table__title {
+  float: left;
+  font-size: 20px;
+  padding-top: 12px;
+}
+
+
+.tbl-row__header {
+  border-bottom: 1px solid #cecece;
+  padding: 15px 0px;
+}
+
+.tbl-row__content {
+  border-bottom: 1px solid #cecece;
+  margin-bottom: -1px;
+  padding: 20px 0px;
+}
+
+.employee-tbl {
+  margin-bottom:60px;
+}
+.employee-tbl__header ul {
+  background-color: #e3e3e3;
+  border-bottom: 1px solid gray;
+  padding: 10px 0px;
+}
+
+.tbl-row__content.open {
+  border-top: 1px solid #DB532D;
+  margin-top: -1px;
+}
+
+.tbl-row__content.closed {
+  display:none;
+}
+
+.employee-tbl__header li,
+.tbl-row__header li,
+.tbl-row__content > li {
+  box-sizing:border-box;
+  display:inline-block;
+  padding-left:10px;
+  width:16%;
+}
+
+.tbl-row__content li ul li {
+  padding-left:0px;
+}
+
+/* upping the specificity */
+.employee-tbl__row .tbl-row__header .toolbox,
+.tbl-row__content li.row-content__action {
+  width:237px;
+}
+.row-content__action {
+  float:right;
+}
+.row-content__action .btn {
+  float: right;
+  height:46px;
+  margin-bottom: 20px;
+  width: 175px;
+}
+.tbl-row__content li {
+  padding-bottom: 6px;
+}

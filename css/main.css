@@ -3,8 +3,8 @@
 html {
     color: gray;
     font-size: 1em;
+    font-family:'Lato', sans-serif;
     line-height: 1.4;
-		font-family:'Lato', sans-serif;
 }
 
 ::-moz-selection {
@@ -18,10 +18,10 @@ html {
 }
 
 hr {
-    display: block;
-    height: 1px;
     border: 0;
     border-top: 1px solid #ccc;
+    display: block;
+    height: 1px;
     margin: 1em 0;
     padding: 0;
 }
@@ -46,9 +46,9 @@ textarea {
 }
 
 .browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
     color: #000;
+    background: #ccc;
+    margin: 0.2em 0;
     padding: 0.2em 0;
 }
 
@@ -56,152 +56,17 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-ul{
+ul {
+  list-style: none;
+  margin:0px;
 	padding:0px;
-	margin:0px;
-	list-style: none;
 }
-a{
-	text-decoration: none;
+
+a {
   color: gray;
-}
-.toolbox{
-    float: right;
-}
-.toolbox__date{
-  float:left;
-}
-.toolbox__date input{
-  width:145px;
-  height: 21px;
-}
-.th__tools{
-	width:100px;
-}
-.table__title{
-  float: left;
-  font-size: 20px;
-  padding-top: 12px;
+	text-decoration: none;
 }
 
-.container > section table{
-	width:100%;
-}
-
-.tbl-row__header{
-  padding: 15px 0px;
-  border-bottom: 1px solid #cecece;
-}
-
-.tbl-row__content{
-  padding: 20px 0px;
-  border-bottom: 1px solid #cecece;
-  margin-bottom: -1px;
-}
-.employee-tbl {
-  margin-bottom:60px;
-}
-.employee-tbl__header ul {
-  padding: 10px 0px;
-  background-color: #e3e3e3;
-  border-bottom: 1px solid gray;
-}
-.tbl-row__content.open {
-  border-top: 1px solid #DB532D;
-  margin-top: -1px;
-}
-.tbl-row__content.closed{
-  display:none;
-}
-.employee-tbl__header li,
-.tbl-row__header li,
-.tbl-row__content > li{
-  display:inline-block;
-  width:16%;
-  padding-left:10px;
-  box-sizing:border-box;
-}
-.tbl-row__content li ul li{
-  padding-left:0px;
-}
-
-/*upping the specificity*/
-.employee-tbl__row .tbl-row__header .toolbox,
-.tbl-row__content li.row-content__action{
-  width:237px;
-}
-.row-content__action{
-  float:right;
-}
-.toolbox span{
-  height: 22px;
-  width: 22px;
-  display: inline-block;
-  border-radius: 3px;
-  position: relative;
-  margin-right: 12px;
-  box-sizing: border-box;
-}
-.toolbox__pencil{
-    background: url(../images/pencil.png) no-repeat 2px;
-    margin-right: 15px;
-}
-.toolbox__pencil:hover{
-  cursor: pointer;
-    border:1px solid #cecece;
-}
-
-.toolbox__arrow:hover{
-  cursor: pointer;
-  border:1px solid #cecece;
-}
-.toolbox__arrow--open{
-    background: url(../images/arrow-up.jpg) no-repeat;
-}
-.toolbox__arrow--closed{
-background: url(../images/arrow-down.jpg) no-repeat 0px 0px;
-}
-.row-content__action .btn{
-  margin-bottom: 20px;
-  width: 175px;
-  float: right;
-  height:46px;
-}
-.tbl-row__content li {
-  padding-bottom: 6px;
-}
-/* pagination component, should be able to move this one out to its own file if need be */
-.pagination{
-    text-align: center;
-}
-
-.pagination ul li{
-display: inline-block;
-  text-align: center;
-  width: 48px;
-  border: 1px solid #cecece;
-  border-right: none;
-}
-.pagination ul li a{
-  display: block;
-  padding: 10px;
-}
-
-.pagination__back{
-    border-radius: 4px 0px 0px 4px;
-}
-.pagination .pagination__forward{
-  border-radius:0px 4px 4px 0px;
-  border-right:1px solid #cecece;
-  margin-left: -1px;
-}
-.pagination .active a{
-  background-color:#e3e3e3;
-}
-.pagination a:hover{
-  background-color:lightgray;  
-}
 /* ==========================================================================
    Media Queries
    ========================================================================== */
