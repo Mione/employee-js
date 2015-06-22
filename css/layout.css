@@ -30,11 +30,21 @@
 		width:50%;
 		float:left;
 	}
+	.container > main{
+		width:100%;
+		padding: 40px 20px;
+		box-sizing: border-box;
+	}
 }
 @media only screen and (max-width: 996px) {
 	
- .container > main, .container .search__wrapper {
-		padding: 40px 10px;
+ .container > main {
+		box-sizing: border-box;
+		padding: 40px 20px;
+		width:100%;
+	}
+ 
+	.container .search__wrapper {
 		width:100%;
 	}
 }
@@ -52,5 +62,13 @@
 	}
 	.search__adv-filter{
 		margin-bottom:20px;
+	}
+	.table-filter__lbl-drop{
+		width:100%;
+		box-sizing:border-box;
+		margin:0px;
+	}
+	.table-filter__lbl-drop select{
+		float:right;
 	}
 }

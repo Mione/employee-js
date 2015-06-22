@@ -1,16 +1,16 @@
-header > nav{
+header > nav {
   height: 100px;
   background-color: white;
   padding: 30px;
   box-sizing: border-box;
 	border-bottom:1px solid #cecece;
 }
-.nav__hamburger{
+.nav__hamburger {
   float: left;
   margin-top: 8px;
   position:relative;
 }
-.hamburger__icon{
+.hamburger__icon {
   display:block;
   background:url(../images/hamburger.jpg) no-repeat;
   width: 30px;
@@ -25,18 +25,18 @@ span.hamburger__icon:hover {
   margin-top: -10px;
   margin-left: -10px;
 }
-.nav__hamburger ul{
+.nav__hamburger ul {
   display:none;
 }
-.nav__pills{
+.nav__pills {
 	float:right;
   margin-top: -5px;
 }
 
-.nav__hamburger li{
+.nav__hamburger li {
 	display:inline-block;
 }
-header h1{
+header h1 {
   width: 250px;
   position: absolute;
   left: 50%;
@@ -45,7 +45,7 @@ header h1{
   padding-left: 30px;
 	background:url(../images/logo.jpg) no-repeat left 7px;
 }
-.nav__pill{
+.nav__pill {
   display: inline-block;
   height: 50px;
   width: 50px;
@@ -61,8 +61,7 @@ header h1{
   position:relative;
   margin-right: 10px;
 }
-.nav__pill--info:after{
-  content: "3";
+.pill__notification {
   position: absolute;
   top: 0px;
   background-color: #D95330;
@@ -75,7 +74,7 @@ header h1{
   padding-left: 7px;
   font-style: normal;
 }
-.nav__pill--profile{
+.nav__pill--profile {
   background: url('../images/avatar.png') no-repeat -4px -16px;
 }
 .nav__pill:hover {
