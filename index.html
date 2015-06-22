@@ -39,43 +39,48 @@
                   <li>Item4</li>
                 </ul>
               </div><!--//nav__hamburger-->
-              <div class="nav__title">Work Force Planning</div>
+              <h1>Work Force Planning</h1>
               <div class="nav__pills">
                 <div class="nav__pill nav__pill--info">i</div>
                 <div class="nav__pill nav__pill--profile"></div>
               </div><!--//nav__pills-->
             </nav>
+
+          </header><!--//container header-->
             <section>
 							<div class="search__wrapper">
 								<form class="clearfix">
-                  
-									<input type="text" name= "name" class="form__component" placeholder = "Name"/>
-									<select class="form__component">
-                    <option selected disabled value = "Allocation Status">Allocation Status</option>
-                    <option value ="Allocated">Allocated</option>
-                    <option value ="Not allocated">Not allocated</option>
-                    <option value = "Some other option">Some other option</option>
-                  </select>
-                  
-									<select class="form__component">
+                  <div class="form__component">
+                    <input type="text" name= "name" placeholder = "Name"/>
+                  </div><!--
+               --><div class="form__component">
+                    <select>
+                      <option selected disabled value = "Allocation Status">Allocation Status</option>
+                      <option value ="Allocated">Allocated</option>
+                      <option value ="Not allocated">Not allocated</option>
+                      <option value = "Some other option">Some other option</option>
+                    </select>
+                  </div><!--
+              --><div class="form__component">
+									<select>
                     <option selected disabled value="Job Title(s)">Job Title(s)</option>
                     <option value = "Engineer">Engineer</option>
                     <option value = "Senior Engineer">Senior Engineer</option>
                     <option value = "Consultant">Consultant</option>
                     <option value = "Senior Engineer">Consultant</option>
                   </select>
-                  <button name ="search" type="submit" class=" btn btn-search form__component form__component--last"><span></span>SEARCH</button>
-								</form>
-								<div class="search__adv-filter">
-									<a href="#">Advanced filters</a>
-								</div>
+                </div><!--
+             --><div class="form__component">
+                  <button name ="search" type="submit" class=" btn btn-search"><span></span>SEARCH</button>
+                </div>
+							</form>
+              <div class="search__adv-filter">
+                <a href="#">Advanced filters</a>
+              </div>
 
 							</div><!--//search__wrapper-->
-            </section><!--//header section-->
-          </header><!--//container header-->
-          
-          <section>
-            <nav>
+            </section><!--//section-->      
+          <main>
               <span class="table__title">Employees</span>
               <form class="table-filter">
                 <div class="table-filter__lbl-drop">
@@ -97,7 +102,6 @@
                 </div>
               </form><!--//table-filter-->
 							<div class="clearfix"></div>
-            </nav>
             <br>
             <div class="employee-tbl">
               <div class = "employee-tbl__header">
@@ -465,7 +469,7 @@
                 <li class="pagination__forward"><a href="#"><span>&raquo;</span></a></li>
               </ul>
             </div><!--//pagination-->
-          </section><!--//container main section-->
+          </main><!--//container main section-->
           <footer></footer>
         </div><!--//container-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

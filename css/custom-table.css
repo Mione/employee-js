@@ -50,6 +50,7 @@
   display:inline-block;
   padding-left:10px;
   width:16%;
+  vertical-align: top;
 }
 
 .tbl-row__content li ul li {

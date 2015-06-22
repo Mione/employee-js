@@ -21,16 +21,16 @@
 .btn-search {
 	background-color: #DB532D;
 	color:#fff;
-	padding: 6px 80px;
-  width:auto;
 }
 
 .btn-search span {
   background: #DB532D url('../images/lupa.jpg') no-repeat;
+  display: inline-block;
   height: 20px;
-  left: 100px;
-  position: absolute;
+  left: -10px;
+  position: relative;
   width: 20px;
+  vertical-align: bottom;
 }
 
 .btn-warning {
@@ -85,8 +85,27 @@
 }
 
 /* ==========================================================================
-   filter options
+   search and filter options
    ========================================================================== */
+
+.search__wrapper {
+  box-sizing: border-box;
+  margin: 0px auto;
+  padding: 40px 0px 40px 0px;
+  width: 1265px;
+}
+
+.search__wrapper form {
+	margin-bottom:30px;
+}
+
+/*.search__wrapper button {
+	float:right;
+}*/
+
+.search__adv-filter {
+	text-align: center;
+}
 
 .table-filter__lbl-drop {
   display: inline-block;
@@ -124,24 +143,25 @@
   margin-right: 0px;
 }
 
-.form__component {
+.form__component{
+  width:25%;
+  box-sizing:border-box;
+  padding:10px;
+  display:inline-block;
+}
+
+.form__component input,.form__component button, .form__component select {
   border: 1px solid #d4d4d4;
   border-radius: 10px;
   box-sizing: border-box;
   height: 54px;
-  margin-right: 18px;
   outline: none;
   padding-left: 10px;
-  width: 300px;
+  width:100%;
 }
 
 .form__component--last:hover {
   border-color:coral;
-}
-
-.form__component.form__component--last {
-  margin-right: 0px;
-  padding-left: 90px;
 }
 
 [data-editable] input {
