@@ -13,7 +13,7 @@
         //TODO continue with building the data.
         function createLi(innerText, attr, attrVal, parent) {
             var createdLi = $('<li>');
-            createdLi.attr(attrVal);
+            createdLi.attr("data-editable",attrVal);
             createdLi.text(innerText);
             createdLi.appendTo(parent);
         }
