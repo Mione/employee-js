@@ -74,3 +74,16 @@
 .tbl-row__content li {
   padding-bottom: 6px;
 }
+.tbl-row__content > li:first-child{
+  width:80%;
+}
+.tbl-row__content > li:last-child{
+  width:20%;
+}
+.row-content__details li{
+  position:relative;
+}
+.row-content__details span {
+  position: absolute;
+  left: 205px;
+}
