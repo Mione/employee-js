@@ -34,7 +34,6 @@ span.hamburger__icon:hover {
 
 .nav__hamburger li {
 	display:block;
-  padding-left: 20px;
 }
 header h1 {
   width: 250px;
@@ -91,7 +90,7 @@ header h1 {
   display:block;
   top: 0px;
   position: fixed;
-  background-color: black;
+  background-color: #DB532D;
   width: 227px;
   left: 0px;
   height: 100%;
@@ -99,6 +98,11 @@ header h1 {
   box-sizing: border-box;
   color: #fff;
 }
-.visible-menu li{
+.visible-menu li a{
   padding-left:20px;
+  color:#fff;
+  display:block;
+}
+.visible-menu li a:hover{
+  background-color:coral;
 }
