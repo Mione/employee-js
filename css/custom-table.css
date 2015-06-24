@@ -57,11 +57,11 @@
   padding-left:0px;
 }
 
-/* upping the specificity */
+/* upping the specificity *
 .employee-tbl__row .tbl-row__header .toolbox,
 .tbl-row__content li.row-content__action {
-  width:237px;
-}
+  width: 20%;
+}*/
 .row-content__action {
   float:right;
 }

@@ -42,12 +42,15 @@
    The toolbox in the custom table. Since it's not necessarily connected to
    the table and can be moved anywhere, it's been placed here.
    ========================================================================== */
-.toolbox__controlls, .toolbox {
+ .toolbox {
+display: inline-block;
+}
+.toolbox__controlls{
   float:right;
 }
 
 .toolbox__date {
-  float:left;
+display: inline-block;
 }
 
 .toolbox__date input {
@@ -164,13 +167,14 @@
 
 [data-editable] input {
   height:16px;
+  width: 100%;
 }
 /* ==========================================================================
    media queries
    ========================================================================== */
 @media only screen and (min-width:1270px){
   .form__component:first-of-type {
-    padding-left:0;
+  padding-left: 10px
   }
 
   .form__component:last-of-type {

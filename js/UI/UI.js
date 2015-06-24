@@ -19,10 +19,10 @@
         }
         
         function generateData(list) {
-            var parentContainer = $(".employee-tbl");
+            var parentContainer = $(".table__content-wrapper");
             $.each(list, function (key, value) {
                 var base = $('<div>').addClass('employee-tbl__row'),
-                    baseheader = $('<ul>').addClass('tbl-row__header'),
+                    baseheader = $('<ul>').addClass('tbl-row__header clearfix'),
                     baseContent = $('<ul>').addClass('tbl-row__content closed'),
                     toolbox = "<li class=\"toolbox\">"+
                     "<div data-editable = \"date\" class=\"toolbox__date\">" + value["Date of booking"] + "</div>"+
