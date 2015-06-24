@@ -43,7 +43,7 @@
    the table and can be moved anywhere, it's been placed here.
    ========================================================================== */
  .toolbox {
-display: inline-block;
+float:right;
 }
 .toolbox__controlls{
   float:right;

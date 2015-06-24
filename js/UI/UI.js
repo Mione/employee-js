@@ -6,7 +6,8 @@
         var $arrowToggle = $('.toolbox__arrow'),
             $editToggle = $('.toolbox__pencil'),
             inEditMode = false,
-            $toolboxControlls = $(".employee-tbl"),
+            $toolboxControlls = $('.employee-tbl'),
+            $hamburger = $('.hamburger__icon'),
             employees = window.data.employees;
             generateData(employees);
         //functions
@@ -19,7 +20,7 @@
         }
         
         function generateData(list) {
-            var parentContainer = $(".table__content-wrapper");
+            var parentContainer = $('.table__content-wrapper');
             $.each(list, function (key, value) {
                 var base = $('<div>').addClass('employee-tbl__row'),
                     baseheader = $('<ul>').addClass('tbl-row__header clearfix'),
@@ -98,6 +99,19 @@
 
                 });
                 inEditMode = false;
+            }
+        });
+        $hamburger.on('click', function () {
+            var $this = $(this),
+                $parent = $this.parent();
+            if ($this.hasClass('nav__hamburger--offset')) {
+              //already visible so close
+                $this.removeClass('nav__hamburger--offset');
+                $this.parent().find('ul').removeClass('visible-menu');
+
+            } else {
+                $this.addClass('nav__hamburger--offset');
+                $this.parent().find('ul').addClass('visible-menu');
             }
         });
     });
