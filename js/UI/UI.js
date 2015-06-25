@@ -1,17 +1,21 @@
-(function ($) {
+(function () {
     'use strict';
-    $(document).ready(function () {
-      
         //var declaration
-        var $arrowToggle = $('.toolbox__arrow'),
-            $editToggle = $('.toolbox__pencil'),
-            inEditMode = false,
-            $toolboxControlls = $('.employee-tbl'),
-            $hamburger = $('.hamburger__icon'),
-            employees = window.data.employees;
-            generateData(employees);
-        //functions
-        //TODO continue with building the data.
+        var $arrowToggle = document.querySelectorAll('.toolbox__arrow'),//supported since ie8 so better than getElementsByClassName
+            $editToggle = document.querySelectorAll('.toolbox__pencil'),
+            $dataTable = document.querySelector('.data-tbl'),
+            $hamburger = document.querySelector('.hamburger__icon'),
+						dataSource = getDataSource($dataTable),
+            tableData = window.data[dataSource],
+            inEditMode = false;
+            generateData(tableData);
+						/*var test =createDomElement({elementType: 'h1',
+														 elementClassList : ['class1', 'class1', 'class1'],
+														 elementValue : 'test',
+														 elementAttribute:{	name:'data-source', value: 'employees'}
+						});*/
+						
+				//function declarations
         function createLi(innerText, attr, attrVal, parent) {
             var createdLi = $('<li>');
             createdLi.attr("data-editable",attrVal);
@@ -19,101 +23,107 @@
             createdLi.appendTo(parent);
         }
         
-        function generateData(list) {
-            var parentContainer = $('.table__content-wrapper');
-            $.each(list, function (key, value) {
-                var base = $('<div>').addClass('employee-tbl__row'),
-                    baseheader = $('<ul>').addClass('tbl-row__header clearfix'),
-                    baseContent = $('<ul>').addClass('tbl-row__content closed'),
-                    toolbox = "<li class=\"toolbox\">"+
-                    "<div data-editable = \"date\" class=\"toolbox__date\">" + value["Date of booking"] + "</div>"+
-                    "<div class=\"toolbox__controlls\">"+
-                      "<span class=\"toolbox__pencil\"></span>"+
-                      "<span class=\"toolbox__arrow toolbox__arrow--closed\"></span>"+
-                    "</div>"+
-                  "</li>";
-                
-                createLi(value["Full Name"], "data-editable", "", baseheader);
-                createLi(value["Job Title"], "data-editable", "", baseheader);
-                createLi(value["Grade"], "data-editable", "", baseheader);
-                createLi(value["Allocation status"], "data-editable", "", baseheader);
-                createLi(value["Project"], "data-editable", "", baseheader);
-                $(toolbox).appendTo(baseheader);
-                
-                createLi(value["Full Name"], "data-editable", "", baseContent);
-                createLi(value["Job Title"], "data-editable", "", baseContent);
-                createLi(value["Full Name"], "data-editable", "", baseContent);
-                createLi(value["Job Title"], "data-editable", "", baseContent);
-                baseheader.appendTo(base);
-                baseContent.appendTo(base);
-                base.appendTo(parentContainer);
-            });
+				function getDataSource(container){
+					var returnSource = container.getAttribute('data-source');
+					if (returnSource) {
+						return returnSource;
+					}
+					else{
+						return "employees";
+					}
+				}
+				
+				function createDomElement(options){
+					//vars
+					var elementType = options['elementType'],
+					elementClassList = options['elementClassList'],
+					elementAttribute = options['elementAttribute'],
+					elementValue = options['elementValue'],
+					parentSelectorName = options['parentSelector'],
+					element = document.createElement(elementType),
+					parentSelectors;//create the actual element
+					if (typeof parentSelectorName == 'string') {
+						parentSelectors = document.querySelectorAll(parentSelectorName);
+					}
+					else{
+						parentSelectors = parentSelectorName;
+
+					}
+					//add class list if array and single class otherwise, no class of undefined
+					if(elementClassList){
+						if(elementClassList.constructor === Array){
+							for(var index in elementClassList){
+								if (!element.classList.contains(elementClassList[index])) {
+									element.classList.add(elementClassList[index]);
+								}
+							}
+						}
+						else{
+							element.classList.add(elementClassList);
+						}
+					}
+					
+					//set element attribute
+					if (elementAttribute)	{element.setAttribute(elementAttribute.name,elementAttribute.value);}
+					
+					//set element value
+					if (elementValue)	element.innerHTML = elementValue;
+
+					//append element to all parents
+					if (parentSelectors) {
+						if (parentSelectors.length>0) {
+							for(var i = 0;i<parentSelectors.length;i++){
+								parentSelectors[i].appendChild(element);
+							}
+						}
+						else{
+								parentSelectors.appendChild(element);
+						}
+					}
+					else{
+						//in this case no parent given, so it's safe to assume we'll need to return the element..
+						return element;
+					}
+					return false;
+				}
+				
+        function generateData(objectList) {
+					for(var i=0;i<objectList.length;i++)
+					{
+							var base = createDomElement({elementType: 'div', elementClassList: 'employee-tbl__row'}),
+								baseheader = createDomElement({elementType: 'ul', elementClassList: ['tbl-row__header', 'clearfix']}),
+								baseContent = createDomElement({elementType: 'ul', elementClassList: ['tbl-row__content', 'closed']});
+								for(var key in objectList[i]){
+									createDomElement({elementType: 'li',
+																	 elementClassList: 'employee-tbl__row',
+																	 elementAttribute:{	name:'data-editable', value: ''},
+																	 elementValue : objectList[i][key],
+																	 parentSelector: baseheader}
+																	 );
+								}
+								base.appendChild(baseheader);
+					}
+					$dataTable.appendChild(base);
         }
         
-        function isDate($obj) {
-            if ($obj.data('editable') === 'date') {
-                return 'date';
-            } else {
-                return 'text';
-            }
-        }
-        //events
-        $toolboxControlls.on('click', '.toolbox__arrow', function () {
-            var $this = $(this),
-                $details = $this.closest('.tbl-row__header').siblings('.tbl-row__content');
-            if ($this.hasClass('toolbox__arrow--closed')) {
-                $this.removeClass('toolbox__arrow--closed');
-                $this.addClass('toolbox__arrow--open');
-                $details.show('fast');
-                $details.removeClass('closed');
-                $details.addClass('open');
-            } else {
-                $this.removeClass('toolbox__arrow--open');
-                $this.addClass('toolbox__arrow--closed');
-                $details.hide('fast');
-                $details.removeClass('open');
-                $details.addClass('closed');
-            }
-        });
-        $toolboxControlls.on('click', '.toolbox__pencil', function () {
-            var $this = $(this),
-                $details = $this.closest('.employee-tbl__row').find('[data-editable]');
-            if (inEditMode === false) {
-                $.each($details, function (index, item) {
-
-                    var text = $(item).text(),
-                        type = isDate($(item));
-                    //debugger;
-                    var $input = $('<input>').attr({
-                            type : type,
-                            value : text,
-                            name : 'editableInput'
-                        });
-                    $($details[index]).html($input);
-                });
-                inEditMode = true;
-            } else {
-                $.each($details, function (index, item) {
-                    var value = $(item).find('input').val();
-                    $(item).find('input').replaceWith(value);
-
-                });
-                inEditMode = false;
-            }
-        });
-        $hamburger.on('click', function () {
-            var $this = $(this),
-                $parent = $this.parent();
-            if ($this.hasClass('nav__hamburger--offset')) {
-              //already visible so close
-                $this.removeClass('nav__hamburger--offset');
-                $this.parent().find('ul').removeClass('visible-menu');
-                $this.parent().find('ul').hide('fast');
-            } else {
-                $this.addClass('nav__hamburger--offset');
-                $this.parent().find('ul').addClass('visible-menu');
-                $this.parent().find('ul').show('fast');
-            }
-        });
-    });
-}(window.jQuery));
+				function arrowClickHandler() {
+				}
+				
+				function pencilClickHandler() {
+				}
+				
+				function hamburgerClickHandler(ev) {
+					var itemList = this.parentElement.getElementsByTagName('ul')[0];// || document.querySelector('.nav__hamburger ul');
+					if (this.classList.contains('nav__hamburger--offset')) {
+						this.classList.remove('nav__hamburger--offset');
+						itemList.classList.remove('visible-menu');
+					}
+					else{
+						this.classList.add('nav__hamburger--offset');
+						itemList.classList.add('visible-menu');
+					}
+				}
+				
+				//events
+				$hamburger.addEventListener('click', hamburgerClickHandler);
+}());

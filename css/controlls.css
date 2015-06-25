@@ -151,7 +151,7 @@ display: inline-block;
   box-sizing:border-box;
   display:inline-block;
   outline:none;
-  padding:10px;
+  padding-right:20px;
   width:25%;
 }
 
@@ -173,11 +173,11 @@ display: inline-block;
    media queries
    ========================================================================== */
 @media only screen and (min-width:1270px){
-  .form__component:first-of-type {
-  padding-left: 10px
+  .search__wrapper .form__component:first-of-type,.search__wrapper .form__component:last-of-type {
+  padding-left: 0px
   }
 
-  .form__component:last-of-type {
+  .search__wrapper .form__component:last-of-type {
     padding-right:0;
   }
 }

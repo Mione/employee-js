@@ -25,10 +25,10 @@
   padding: 20px 0px;
 }
 
-.employee-tbl {
+.data-tbl {
   margin-bottom:60px;
 }
-.employee-tbl__header ul {
+.data-tbl__header ul {
   background-color: #e3e3e3;
   border-bottom: 1px solid gray;
   padding: 10px 0px;
@@ -43,7 +43,7 @@
   display:none;
 }
 
-.employee-tbl__header li,
+.data-tbl__header li,
 .tbl-row__header li,
 .tbl-row__content > li {
   box-sizing:border-box;
@@ -58,7 +58,7 @@
 }
 
 /* upping the specificity *
-.employee-tbl__row .tbl-row__header .toolbox,
+.data-tbl__row .tbl-row__header .toolbox,
 .tbl-row__content li.row-content__action {
   width: 20%;
 }*/

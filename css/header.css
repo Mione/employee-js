@@ -76,14 +76,12 @@ header h1 {
 }
 
 /*visible menu*/
-.hamburger__icon{
-  transition: margin-left 0.3s ease;
 
-}
 .nav__hamburger--offset{
     margin-left: 240px;
 }
 .nav__hamburger .visible-menu{
+	display:block;
   top: 0px;
   position: fixed;
   background-color: #DB532D;

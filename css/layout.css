@@ -83,7 +83,7 @@
 		float:right;
 		padding-right: 0px
 	}
-	.employee-tbl__row, .employee-tbl__header{
+	.data-tbl__row, .data-tbl__header{
 		width:550px;
 	}
 	.table__content-wrapper {
