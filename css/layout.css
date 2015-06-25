@@ -57,7 +57,9 @@
 }
 
 @media only screen and (max-width: 550px) {
-	
+	.container{
+		font-size:13px;
+	}
 	.search__wrapper .form__component {
 		width:100%;
 		padding:0px 0px 10px 0px;
@@ -80,9 +82,6 @@
 	.table-filter__lbl-drop select{
 		float:right;
 		padding-right: 0px
-	}
-	.employee-tbl{
-		font-size:13px;
 	}
 	.employee-tbl__row, .employee-tbl__header{
 		width:550px;

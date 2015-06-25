@@ -108,10 +108,11 @@
               //already visible so close
                 $this.removeClass('nav__hamburger--offset');
                 $this.parent().find('ul').removeClass('visible-menu');
-
+                $this.parent().find('ul').hide('fast');
             } else {
                 $this.addClass('nav__hamburger--offset');
                 $this.parent().find('ul').addClass('visible-menu');
+                $this.parent().find('ul').show('fast');
             }
         });
     });

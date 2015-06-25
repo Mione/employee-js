@@ -16,13 +16,7 @@ header > nav {
   height: 20px;
 }
 span.hamburger__icon:hover {
-  border: 1px solid #cecece;
-  padding: 10px;
-  background-position: 8px;
-  border-radius: 5px;
   cursor:pointer;
-  margin-top: -10px;
-  margin-left: -10px;
 }
 .nav__hamburger ul {
   display:none;
@@ -82,12 +76,14 @@ header h1 {
 }
 
 /*visible menu*/
+.hamburger__icon{
+  transition: margin-left 0.3s ease;
+
+}
 .nav__hamburger--offset{
-    left: 240px;
-    position:absolute;
+    margin-left: 240px;
 }
 .nav__hamburger .visible-menu{
-  display:block;
   top: 0px;
   position: fixed;
   background-color: #DB532D;
