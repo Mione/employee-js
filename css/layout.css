@@ -84,10 +84,11 @@
 		padding-right: 0px
 	}
 	.data-tbl__row, .data-tbl__header{
-		width:550px;
+		width:750px;
 	}
 	.table__content-wrapper {
-		overflow-x: scroll;
+		overflow-x: auto;
+		overflow-y:hidden;
 		border: 1px solid #cecece;
 		margin-right: -1px;
 	}
