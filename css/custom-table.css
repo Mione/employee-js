@@ -58,7 +58,9 @@
 .tbl-row__content li ul li {
   padding-left:0px;
 }
-
+.tbl-row__header li:last-child{
+  width:20%;
+}
 /* upping the specificity *
 .data-tbl__row .tbl-row__header .toolbox,
 .tbl-row__content li.row-content__action {
@@ -88,4 +90,13 @@
 .row-content__details span {
   position: absolute;
   left: 205px;
+}
+.toolbox span {
+  height: 22px;
+  width: 22px;
+  display: inline-block;
+  border-radius: 3px;
+  position: relative;
+  margin-right: 12px;
+  box-sizing: border-box;
 }

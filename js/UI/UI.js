@@ -86,12 +86,24 @@
             baseheader = createDomElement({elementType: 'ul', elementClassList: ['tbl-row__header', 'clearfix']}),
             baseContent = createDomElement({elementType: 'ul', elementClassList: ['tbl-row__content', 'closed']});
             for(var key in headerInfo){
-              createDomElement({elementType: 'li',
-                               elementClassList: 'employee-tbl__row',
+             /* var innerValue;
+              if (key === 'date') {
+                var test = createToolbox();
+                innerValue =  objectList[i][key];              debugger;
+              }
+              else{
+                innerValue = objectList[i][key];
+              }*/
+
+              var myLi = createDomElement({elementType: 'li',
                                elementAttribute:{	name:'data-editable', value: ''},
-                               elementValue : objectList[i][key],
-                               parentSelector: baseheader}
-                               );
+                               elementValue : objectList[i][key]
+                               });
+              if (key === 'date') {
+                myLi.classList.add('toolbox');
+                createToolbox(myLi);
+              }
+              baseheader.appendChild(myLi);
             }
             base.appendChild(baseheader);
             $dataTable.appendChild(base);
@@ -102,9 +114,15 @@
       //we need to link the value and the order with the table header.
       var headerWrapper = document.querySelector('.data-tbl__header ul'), headerInfo = {};
       for (var i = 0;i < headerWrapper.children.length;i++) {
-        headerInfo[headerWrapper.children[i].getAttribute('data-description')] = i;
+            headerInfo[headerWrapper.children[i].getAttribute('data-description')] = i;
       }
       return headerInfo;
+    }
+    
+    function createToolbox(parent){
+       var toolboxControlls = "<span class=\"toolbox__pencil\"></span>"+
+                      "<span class=\"toolbox__arrow toolbox__arrow--closed\"></span>",
+                      toolbox = createDomElement({elementType: 'div', elementClassList:'toolbox__controlls', elementValue : toolboxControlls, parentSelector: parent});
     }
     
     function arrowClickHandler() {
