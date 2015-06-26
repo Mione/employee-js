@@ -82,7 +82,6 @@
       var headerCount = Object.keys(headerInfo).length;
       for(var i=0;i<objectList.length;i++)
       {
-
           var base = createDomElement({elementType: 'div', elementClassList: 'employee-tbl__row'}),
             baseheader = createDomElement({elementType: 'ul', elementClassList: ['tbl-row__header', 'clearfix']}),
             baseContent = createDomElement({elementType: 'ul', elementClassList: ['tbl-row__content', 'closed']});
@@ -93,7 +92,6 @@
                                elementValue : objectList[i][key],
                                parentSelector: baseheader}
                                );
-
             }
             base.appendChild(baseheader);
             $dataTable.appendChild(base);

@@ -27,6 +27,7 @@
 
 .data-tbl {
   margin-bottom:60px;
+  font-size: 0px;
 }
 .data-tbl__header ul {
   background-color: #e3e3e3;
@@ -51,6 +52,7 @@
   padding-left:10px;
   width:16%;
   vertical-align: top;
+  font-size:16px;
 }
 
 .tbl-row__content li ul li {
