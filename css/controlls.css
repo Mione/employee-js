@@ -134,6 +134,7 @@ display: inline-block;
   font-weight: bold;
   margin: 0px;
   width:auto;
+  padding: 16px;
 }
 
 .table-filter__lbl-drop {
@@ -146,7 +147,7 @@ display: inline-block;
   margin-right: 0px;
 }
 
-.form__component{
+.form__component {
   border-radius: 10px;
   box-sizing:border-box;
   display:inline-block;
