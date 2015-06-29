@@ -3,7 +3,7 @@
     //var declaration
     var $arrowToggle = document.querySelectorAll('.toolbox__arrow'),
       //supported since ie8 so better than getElementsByClassName
-        $editToggle = document.querySelectorAll('.toolbox__pencil'),
+        $toolboxControlls = document.querySelectorAll('.toolbox__controlls'),
         $dataTable = document.querySelector('.table__content-wrapper'),
         $hamburger = document.querySelector('.hamburger__icon'),
         dataSource = getDataSource($dataTable),
@@ -69,9 +69,11 @@
         }
         return false;
     }
+    
     function generateData(objectList, headerInfo) {
       var headerCount = Object.keys(headerInfo).length;
       for (var i = 0; i < objectList.length; i++) {
+        console.log('data tbl row is generated');
         var base = createDomElement({
             elementType: 'div',
             elementClassList: 'data-tbl__row'
@@ -85,12 +87,13 @@
             elementType: 'ul',
             elementClassList: [
               'tbl-row__content',
-              'open'
+              'closed'
             ]
           });
         
         //let's build the table row header
         for (var key in headerInfo) {
+
           var myLi = createDomElement({
             elementType: 'li',
             elementAttribute: {
@@ -99,12 +102,17 @@
             },
             elementValue: objectList[i][key]
           });
-          if (key === 'date') {
+          /*if (key === 'date') {
             myLi.classList.add('toolbox');
             createToolbox(myLi);
-          }
+          }*/
+          
           baseheader.appendChild(myLi);
         }
+        var baseheaderLen  = baseheader.children.length, lastColumn;
+        lastColumn = baseheader.children[baseheaderLen - 1];
+        lastColumn.classList.add('toolbox');
+        createToolbox(lastColumn);
         
         //let's build the table row hidden content
         for(var key in objectList[i].details) {
@@ -140,8 +148,38 @@
           parentSelector: parent
         });
     }
-    function arrowClickHandler() {
+    
+    function findParent(startElement, targetParentClass) {
+      while((startElement = startElement.parentElement) && !startElement.classList.contains(targetParentClass)){};
+      return startElement;
     }
+    
+    
+    function toolboxClickHandler(event) {
+      if (event.target.classList.contains('toolbox__arrow')) {
+        var parent = findParent(event.target, 'data-tbl__row'),
+          rowDetails = parent.children[1];
+          toggleRowDetails(rowDetails, event.target);
+        event.stopPropagation();
+      }
+    }
+    
+    function toggleRowDetails (element, clickedArrow) {
+
+      if (clickedArrow.classList.contains('toolbox__arrow--closed')) {
+          clickedArrow.classList.remove('toolbox__arrow--closed');
+          clickedArrow.classList.add('toolbox__arrow--open');
+          element.classList.remove('closed');
+          element.classList.add('open');
+      }
+      else{
+          clickedArrow.classList.add('toolbox__arrow--closed');
+          clickedArrow.classList.remove('toolbox__arrow--open');
+          element.classList.add('closed');
+          element.classList.remove('open');
+      }
+    }
+    
     function pencilClickHandler() {
     }
     function hamburgerClickHandler(ev) {
@@ -157,4 +195,6 @@
     }
     //events
     $hamburger.addEventListener('click', hamburgerClickHandler);
+    $dataTable.addEventListener('click', toolboxClickHandler);
+    
 }(document));

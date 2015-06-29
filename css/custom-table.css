@@ -44,6 +44,7 @@
 .tbl-row__content.open {
   border-top: 1px solid #DB532D;
   margin-top: -1px;
+  display:block;
 }
 
 .tbl-row__content.closed {
