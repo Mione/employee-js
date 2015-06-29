@@ -1,26 +1,33 @@
-(function (document) {
+function myApp (document) {
     'use strict';
     //var declaration
-    var $arrowToggle = document.querySelectorAll('.toolbox__arrow'),
-      //supported since ie8 so better than getElementsByClassName
-        $toolboxControlls = document.querySelectorAll('.toolbox__controlls'),
-        $dataTable = document.querySelector('.table__content-wrapper'),
-        $hamburger = document.querySelector('.hamburger__icon'),
-        dataSource = getDataSource($dataTable),
-        tableData = window.data[dataSource],
-        inEditMode = false,
-        headerInfo = getTblHeaderInfo();
-    generateData(tableData, headerInfo);
-    //function declarations
-    function getDataSource(container) {
-        var returnSource = container.getAttribute('data-source');
-        if (returnSource) {
-            return returnSource;
-        } else {
-          return 'employees';
-        }
+    var $arrowToggle = document.querySelectorAll('.toolbox__arrow'),//supported since ie8 so better than getElementsByClassName
+    $toolboxControlls = document.querySelectorAll('.toolbox__controlls');
+    this.$dataTable = document.querySelector('.table__content-wrapper');
+    this.$hamburger = document.querySelector('.hamburger__icon');
+    this.dataSource = this.getDataSource(this.$dataTable);
+    this.tableData = window.data[this.dataSource],
+    this.inEditMode = false,
+    this.headerInfo = this.getTblHeaderInfo();
+    this.generateData(this.tableData, this.headerInfo);
+//function declarations
+
+//events
+    this.$hamburger.addEventListener('click', this.hamburgerClickHandler);
+    this.$dataTable.addEventListener('click', this.toolboxClickHandler.bind(this));
+
+}
+
+myApp.prototype.getDataSource = function (container) {
+    var returnSource = container.getAttribute('data-source');
+    if (returnSource) {
+        return returnSource;
+    } else {
+      return 'employees';
     }
-    function createDomElement(options) {
+};
+
+myApp.prototype.createDomElement = function (options) {
         //variables
         var elementType = options.elementType,
             elementClassList = options.elementClassList,
@@ -68,22 +75,22 @@
           return element;
         }
         return false;
-    }
-    
-    function generateData(objectList, headerInfo) {
+};
+
+myApp.prototype.generateData = function (objectList, headerInfo) {
       var headerCount = Object.keys(headerInfo).length;
       for (var i = 0; i < objectList.length; i++) {
         console.log('data tbl row is generated');
-        var base = createDomElement({
+        var base = this.createDomElement({
             elementType: 'div',
             elementClassList: 'data-tbl__row'
-          }), baseheader = createDomElement({
+          }), baseheader = this.createDomElement({
             elementType: 'ul',
             elementClassList: [
               'tbl-row__header',
               'clearfix'
             ]
-          }), baseContent = createDomElement({
+          }), baseContent = this.createDomElement({
             elementType: 'ul',
             elementClassList: [
               'tbl-row__content',
@@ -94,7 +101,7 @@
         //let's build the table row header
         for (var key in headerInfo) {
 
-          var myLi = createDomElement({
+          var myLi = this.createDomElement({
             elementType: 'li',
             elementAttribute: {
               name: 'data-editable',
@@ -112,11 +119,11 @@
         var baseheaderLen  = baseheader.children.length, lastColumn;
         lastColumn = baseheader.children[baseheaderLen - 1];
         lastColumn.classList.add('toolbox');
-        createToolbox(lastColumn);
+        this.createToolbox(lastColumn);
         
         //let's build the table row hidden content
         for(var key in objectList[i].details) {
-          var myLi = createDomElement({
+          var myLi = this.createDomElement({
             elementType: 'li',
             elementAttribute: {
               name: 'data-editable',
@@ -129,42 +136,58 @@
         
         base.appendChild(baseheader);
         base.appendChild(baseContent);
-        $dataTable.appendChild(base);
+        this.$dataTable.appendChild(base);
       }
-    }
-    function getTblHeaderInfo() {
+};
+
+myApp.prototype.getTblHeaderInfo = function () {
       //we need to link the value and the order with the table header.
       var headerWrapper = document.querySelector('.data-tbl__header ul'), headerInfo = {};
       for (var i = 0; i < headerWrapper.children.length; i++) {
         headerInfo[headerWrapper.children[i].getAttribute('data-description')] = i;
       }
       return headerInfo;
-    }
-    function createToolbox(parent) {
-      var toolboxControlls = '<span class="toolbox__pencil"></span>' + '<span class="toolbox__arrow toolbox__arrow--closed"></span>', toolbox = createDomElement({
+};
+
+myApp.prototype.findParent = function (startElement, targetParentClass) {
+      while((startElement = startElement.parentElement) && !startElement.classList.contains(targetParentClass)){}
+      return startElement;
+};
+
+myApp.prototype.createToolbox = function (parent) {
+      var toolboxControlls = '<span class="toolbox__pencil"></span>' + '<span class="toolbox__arrow toolbox__arrow--closed"></span>',
+      toolbox = this.createDomElement({
           elementType: 'div',
           elementClassList: 'toolbox__controlls',
           elementValue: toolboxControlls,
           parentSelector: parent
         });
-    }
-    
-    function findParent(startElement, targetParentClass) {
-      while((startElement = startElement.parentElement) && !startElement.classList.contains(targetParentClass)){};
-      return startElement;
-    }
-    
-    
-    function toolboxClickHandler(event) {
-      if (event.target.classList.contains('toolbox__arrow')) {
-        var parent = findParent(event.target, 'data-tbl__row'),
+};
+
+myApp.prototype.toolboxClickHandler = function (ev, secDiv) {
+console.log(ev);
+console.log(this);
+      if (ev.target.classList.contains('toolbox__arrow')) {
+        var parent = this.findParent(ev.target, 'data-tbl__row'),
           rowDetails = parent.children[1];
-          toggleRowDetails(rowDetails, event.target);
+          this.toggleRowDetails(rowDetails, ev.target);
         event.stopPropagation();
       }
-    }
-    
-    function toggleRowDetails (element, clickedArrow) {
+};
+
+myApp.prototype.hamburgerClickHandler = function (ev) {
+      var $this = this, itemList = $this.parentElement.getElementsByTagName('ul')[0];
+      // || document.querySelector('.nav__hamburger ul');
+      if ($this.classList.contains('nav__hamburger--offset')) {
+        $this.classList.remove('nav__hamburger--offset');
+        itemList.classList.remove('visible-menu');
+      } else {
+        $this.classList.add('nav__hamburger--offset');
+        itemList.classList.add('visible-menu');
+      }
+};
+
+myApp.prototype.toggleRowDetails = function (element, clickedArrow) {
 
       if (clickedArrow.classList.contains('toolbox__arrow--closed')) {
           clickedArrow.classList.remove('toolbox__arrow--closed');
@@ -178,23 +201,6 @@
           element.classList.add('closed');
           element.classList.remove('open');
       }
-    }
-    
-    function pencilClickHandler() {
-    }
-    function hamburgerClickHandler(ev) {
-      var $this = this, itemList = $this.parentElement.getElementsByTagName('ul')[0];
-      // || document.querySelector('.nav__hamburger ul');
-      if ($this.classList.contains('nav__hamburger--offset')) {
-        $this.classList.remove('nav__hamburger--offset');
-        itemList.classList.remove('visible-menu');
-      } else {
-        $this.classList.add('nav__hamburger--offset');
-        itemList.classList.add('visible-menu');
-      }
-    }
-    //events
-    $hamburger.addEventListener('click', hamburgerClickHandler);
-    $dataTable.addEventListener('click', toolboxClickHandler);
-    
-}(document));
+};
+var app = new myApp(document);
+console.log(app)
