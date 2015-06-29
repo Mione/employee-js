@@ -1,3 +1,4 @@
+(function (document){
 function myApp (document) {
     'use strict';
     //var declaration
@@ -15,7 +16,6 @@ function myApp (document) {
 //events
     this.$hamburger.addEventListener('click', this.hamburgerClickHandler);
     this.$dataTable.addEventListener('click', this.toolboxClickHandler.bind(this));
-
 }
 
 myApp.prototype.getDataSource = function (container) {
@@ -203,4 +203,6 @@ myApp.prototype.toggleRowDetails = function (element, clickedArrow) {
       }
 };
 var app = new myApp(document);
-console.log(app)
+console.log(app);
+
+}(window.document))
