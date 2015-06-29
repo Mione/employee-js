@@ -11,6 +11,7 @@ function myApp (document) {
     this.inEditMode = false,
     this.headerInfo = this.getTblHeaderInfo();
     this.generateData(this.tableData, this.headerInfo);
+    this.resizeColumns(this.headerInfo)
 //function declarations
 
 //events
@@ -25,6 +26,14 @@ myApp.prototype.getDataSource = function (container) {
     } else {
       return 'employees';
     }
+};
+
+myApp.prototype.resizeColumns = function (number) {
+  var len =  Object.keys(number).length;
+  var columns = document.querySelectorAll('.tbl-row__header li, .data-tbl__header li');
+  for(var i = 0; i< columns.length; i++) {
+    columns[i].style.width = 100/len+"%";
+  }
 };
 
 myApp.prototype.createDomElement = function (options) {
@@ -165,8 +174,6 @@ myApp.prototype.createToolbox = function (parent) {
 };
 
 myApp.prototype.toolboxClickHandler = function (ev, secDiv) {
-console.log(ev);
-console.log(this);
       if (ev.target.classList.contains('toolbox__arrow')) {
         var parent = this.findParent(ev.target, 'data-tbl__row'),
           rowDetails = parent.children[1];
