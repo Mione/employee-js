@@ -57,7 +57,7 @@
 }
 
 @media only screen and (max-width: 550px) {
-	.container{
+	.container, .container .data-tbl__header li, .container .tbl-row__header li{
 		font-size:13px;
 	}
 	.search__wrapper .form__component {
