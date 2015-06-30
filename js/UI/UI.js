@@ -14,7 +14,7 @@ mio.modules.tableGenerator =
             this.$dataTable = document.querySelector('.table__content-wrapper');
             this.$hamburger = document.querySelector('.hamburger__icon');
             this.dataSource = this.getDataSource(this.$dataTable);
-            this.tableData = window.data[this.dataSource];
+            this.tableData = mio.data[this.dataSource];
             this.inEditMode = false;
             this.headerInfo = this.getTblHeaderInfo();
             this.generateData(this.tableData, this.headerInfo);
