@@ -2,8 +2,8 @@
     table generator module.
     @mio.tableGenerator, object, returns an already instantiated function myApp.
    ========================================================================== */
-var mio = mio || {},
-    moduleName = 'tableGenerator';
+var mio = mio || {};
+
 mio.modules.tableGenerator =
     (function (document) {
         //'use strict';
@@ -11,6 +11,7 @@ mio.modules.tableGenerator =
 
             var $arrowToggle = document.querySelectorAll('.toolbox__arrow'),//supported since ie8 so better than getElementsByClassName
                 $toolboxControlls = document.querySelectorAll('.toolbox__controlls');
+
             this.$dataTable = document.querySelector('.table__content-wrapper');
             this.$hamburger = document.querySelector('.hamburger__icon');
             this.dataSource = this.getDataSource(this.$dataTable);
@@ -19,6 +20,7 @@ mio.modules.tableGenerator =
             this.headerInfo = this.getTblHeaderInfo();
             this.generateData(this.tableData, this.headerInfo);
             this.resizeColumns(this.headerInfo);
+            var moduleName = 'tableGenerator';
 
 
 //events
@@ -219,7 +221,7 @@ mio.modules.tableGenerator =
         return myApp;
 
 }(window.document));
-    
-if (mio.isRequired(moduleName)) {
+    console.log(mio)
+if (mio.isRequired('tableGenerator')) {
     mio.modules.tableGenerator = new mio.modules.tableGenerator();
 }

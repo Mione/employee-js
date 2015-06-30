@@ -1,6 +1,7 @@
 /* ==========================================================================
    namespace declaration
-   @uiSchool - to hold all other modules as required.
+   mio {object}
+   @Description: namespace declaration, to hold all other modules as required.
    ========================================================================== */
 var mio = mio || {};
 
