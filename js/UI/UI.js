@@ -7,34 +7,42 @@ var mio = mio || {};
 mio.modules.tableGenerator =
     (function (document) {
         //'use strict';
-        function myApp() {
-
+        function myApp(myTable, options) {
             var $arrowToggle = document.querySelectorAll('.toolbox__arrow'),//supported since ie8 so better than getElementsByClassName
-                $toolboxControlls = document.querySelectorAll('.toolbox__controlls');
-
-            this.$dataTable = document.querySelector('.table__content-wrapper');
+                $toolboxControlls = document.querySelectorAll('.toolbox__controlls'),
+                moduleName = 'tableGenerator',
+                selector;
+            myTable ? (selector = document.querySelector(myTable)) : (selector = document);
+            this.options = options;
+            this.tableRoot = document.querySelector(myTable) || document.querySelector('.data-tbl');
+            try {
+                this.$dataTable = selector.querySelector('.table__content-wrapper');
+            } catch(e) {
+                selector = document;
+                this.$dataTable = selector.querySelector('.table__content-wrapper');
+            }
             this.$hamburger = document.querySelector('.hamburger__icon');
-            this.dataSource = this.getDataSource(this.$dataTable);
+            this.dataSource = this.getDataSource(this.tableRoot);
             this.tableData = mio.data[this.dataSource];
             this.inEditMode = false;
             this.headerInfo = this.getTblHeaderInfo();
             this.generateData(this.tableData, this.headerInfo);
             this.resizeColumns(this.headerInfo);
-            var moduleName = 'tableGenerator';
-
-
 //events
             this.$hamburger.addEventListener('click', this.hamburgerClickHandler);
             this.$dataTable.addEventListener('click', this.toolboxClickHandler.bind(this));
         }
 
         myApp.prototype.getDataSource = function (container) {
+          console.log(container)
             var returnSource = container.getAttribute('data-source');
+            console.log(returnSource);
             if (returnSource) {
                 return returnSource;
             } else {
                 return 'employees';
             }
+            
         };
 
         myApp.prototype.resizeColumns = function (number) {
@@ -98,7 +106,6 @@ mio.modules.tableGenerator =
         myApp.prototype.generateData = function (objectList, headerInfo) {
               var headerCount = Object.keys(headerInfo).length;
               for (var i = 0; i < objectList.length; i++) {
-                console.log('data tbl row is generated');
                 var base = this.createDomElement({
                     elementType: 'div',
                     elementClassList: 'data-tbl__row'
@@ -118,15 +125,31 @@ mio.modules.tableGenerator =
                 
                 //let's build the table row header
                 for (var key in headerInfo) {
-        
+                  var elementValue = objectList[i][key],
+                      myInput;                
                   var myLi = this.createDomElement({
                     elementType: 'li',
                     elementAttribute: {
                       name: 'data-editable',
                       value: ''
                     },
-                    elementValue: objectList[i][key]
+                    elementValue: elementValue
                   });
+                  
+                  if (this.options) {
+                      if (this.options.editable === true) {
+                        myInput = this.createDomElement({
+                          elementType: 'input',
+                          elementValue: elementValue
+                        });
+                        myInput.type = "text";
+                        myInput.value = elementValue;
+                        myLi.childNodes[0].textContent = "";
+                        myLi.appendChild(myInput);
+                      }
+                      
+                  }
+                  //console.log(this.options);
                   /*if (key === 'date') {
                     myLi.classList.add('toolbox');
                     createToolbox(myLi);
@@ -218,10 +241,9 @@ mio.modules.tableGenerator =
                   element.classList.remove('open');
               }
         };
+                
         return myApp;
 
 }(window.document));
-    console.log(mio)
-if (mio.isRequired('tableGenerator')) {
-    mio.modules.tableGenerator = new mio.modules.tableGenerator();
-}
+new mio.modules.tableGenerator();
+new mio.modules.tableGenerator('.editable-table', {editable:true});

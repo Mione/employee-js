@@ -67,7 +67,9 @@
 .tbl-row__header li:last-child{
   width:20%;
 }
-
+.tbl-row__header li:last-child input{
+  width:50%;
+}
 .row-content__action {
   float:right;
 }

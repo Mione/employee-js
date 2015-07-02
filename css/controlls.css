@@ -167,8 +167,13 @@ display: inline-block;
 }
 
 [data-editable] input {
-  height:16px;
-  width: 100%;
+  width: 80%;
+  border: none;
+  outline:none;
+}
+[data-editable] input:focus {
+  border-bottom:1px solid coral;
+  color:coral;
 }
 /* ==========================================================================
    media queries

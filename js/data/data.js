@@ -6,7 +6,7 @@ mio.data =
         var data = {},
             employees = [
                 {
-                    fullName : 'Ciba Mumu',
+                    fullName : 'John Doe',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -20,7 +20,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciba Mumu',
+                    fullName : 'John Doe',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -34,7 +34,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciba Mumu',
+                    fullName : 'John Doe',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -48,7 +48,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciba Mumu',
+                    fullName : 'John Doe',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -62,7 +62,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciba Mumu',
+                    fullName : 'John Doe',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -76,7 +76,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciba Mumu',
+                    fullName : 'John Doe',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -90,7 +90,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciba Mumu',
+                    fullName : 'John Doe',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -104,7 +104,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciba Mumu',
+                    fullName : 'John Doe',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -118,7 +118,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciba Mumu',
+                    fullName : 'John Doe',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -132,7 +132,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciba Mumu',
+                    fullName : 'John Doe',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -148,7 +148,7 @@ mio.data =
             ],
             customers = [
                 {
-                    fullName : 'Caaaaiba Mumu',
+                    fullName : 'Ciba Mumu',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -162,7 +162,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Cibaaaa Mumu',
+                    fullName : 'Ciba Mumu',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -176,7 +176,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Cibaasda Mumu',
+                    fullName : 'Ciba Mumu',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -190,7 +190,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciba asdMumu',
+                    fullName : 'Ciba Mumu',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -204,7 +204,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciba asdMumu',
+                    fullName : 'Ciba Mumu',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -218,7 +218,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciasdba Mumu',
+                    fullName : 'Ciba Mumu',
                     jobTitle : "UaI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
