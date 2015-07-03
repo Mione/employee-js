@@ -1,6 +1,6 @@
 /* ==========================================================================
     table generator module.
-    mio.tableGenerator {object}
+    mio.modules.tableGenerator {object}
    ========================================================================== */
 var mio = mio || {};
 
@@ -18,15 +18,14 @@ mio.modules.tableGenerator =
             this.options = options;
             this.tableRoot = document.querySelector(myTable) || document.querySelector('.data-tbl');
             try {
-                this.$dataTable = this.selector.querySelector('.table__content-wrapper');
+                this.dataTable = this.selector.querySelector('.table__content-wrapper');
             } catch (e) {
                 this.selector = document;
-                this.$dataTable = this.selector.querySelector('.table__content-wrapper');
+                this.dataTable = this.selector.querySelector('.table__content-wrapper');
             }
             
             this.dataSource = this.getDataSource(this.tableRoot);
             this.tableData = mio.data[this.dataSource];
-            this.inEditMode = false;
             this.headerInfo = this.getTblHeaderInfo();
             this.generateData(this.tableData, this.headerInfo);
             this.resizeColumns(this.headerInfo);
@@ -39,7 +38,7 @@ mio.modules.tableGenerator =
                 tableData : mio.data[this.dataSource]
             };
 
-            this.$dataTable.addEventListener('click', this.toolboxClickHandler.bind(this));
+            this.dataTable.addEventListener('click', this.toolboxClickHandler.bind(this));
         };
 
         myApp.prototype.init = function () {
@@ -193,7 +192,7 @@ mio.modules.tableGenerator =
               
               base.appendChild(baseheader);
               base.appendChild(baseContent);
-              this.$dataTable.appendChild(base);
+              this.dataTable.appendChild(base);
             }
         };
 
