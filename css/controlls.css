@@ -171,10 +171,19 @@ display: inline-block;
   border: none;
   outline:none;
 }
+
 [data-editable] input:focus {
   border-bottom:1px solid coral;
   color:coral;
 }
+
+[name="search-input"] {
+  border-radius: 10px;
+  border: 1px solid #cecece;
+  outline: none;
+  padding: 16px;
+}
+
 /* ==========================================================================
    media queries
    ========================================================================== */

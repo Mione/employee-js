@@ -82,16 +82,9 @@
 							</div><!--//search__wrapper-->
             </section><!--//section-->      
           <main>
-              <span class="table__title">Employees</span>
+              <span class="table__title">Customers</span>
               <form class="table-filter">
-                <div class="table-filter__lbl-drop">
-                  <label >Filter by:</label>
-                  <select class="form__component">
-                    <option selected value ="Multiple selection">Multiple selection</option>
-                    <option value ="Single selection">Single selection</option>
-                    <option value ="Some other selection">Some other selection</option>
-                  </select>
-                </div>
+                <input type="text" name="search-input" class = "search-field"placeholder = "Do a search">
                 <div class="table-filter__lbl-drop">
                   <label >Show:</label>
                     <select class="form__component">
@@ -119,21 +112,40 @@
                   </div><!--//data-tbl__header-->
                 </div><!--//table__content-wrapper-->
               </div><!--//data-tbl-->
-              
-              <div class="data-tbl editable-table" data-source = "employees" >
-                <div class="table__content-wrapper">
-                  <div class = "data-tbl__header">
-                    <ul>
-                      <li data-description="fullName">Full Name</li>
-                      <li data-description="jobTitle">Job Title</li>
-                      <li data-description="grade">Grade</li>
-                      <li data-description="allocationStatus">Allocation status</li>
-                      <li data-description="project">Project</li>
-                      <li data-description="date">Date of booking</li>
-                    </ul>
-                  </div><!--//data-tbl__header-->
-                </div><!--//table__content-wrapper-->
-              </div><!--//data-tbl-->
+
+
+              <span class="table__title">Employees</span>
+              <form class="table-filter">
+                <input type="text" name="search-input" class= "search-field--editable" placeholder = "Do a search">
+                <div class="table-filter__lbl-drop">
+                  <label >Show:</label>
+                    <select class="form__component">
+                      <option  value = "1 entries">1 entry</option>
+                      <option selected value = "10 entries">10 entries</option>
+                      <option  value = "100 entries">100 entries</option>
+                      <option  value = "1000 entries">1000 entries</option>
+                    </select>
+                </div>
+              </form><!--//table-filter-->
+							<div class="clearfix"></div>
+            <br>
+
+
+
+            <div class="data-tbl editable-table" data-source = "employees" >
+              <div class="table__content-wrapper">
+                <div class = "data-tbl__header">
+                  <ul>
+                    <li data-description="fullName">Full Name</li>
+                    <li data-description="jobTitle">Job Title</li>
+                    <li data-description="grade">Grade</li>
+                    <li data-description="allocationStatus">Allocation status</li>
+                    <li data-description="project">Project</li>
+                    <li data-description="date">Date of booking</li>
+                  </ul>
+                </div><!--//data-tbl__header-->
+              </div><!--//table__content-wrapper-->
+            </div><!--//data-tbl-->
               
             <div class="pagination">
               <ul>
@@ -155,10 +167,12 @@
           </main><!--//container main section-->
           <footer></footer>
         </div><!--//container-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        
         <script src = "js/main.js"></script>
-        <script src="js/data/data.js"></script>
+        <script src = "js/UI/modules/data.js"></script>
+        <script src = "js/UI/modules/tableGenerator.js"></script>
+        <script src = "js/UI/modules/search.js"></script>
+        
         <script src="js/UI/UI.js"></script>
-
     </body>
 </html>

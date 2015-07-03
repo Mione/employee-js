@@ -1,0 +1,5 @@
+1. Creati o componenta ce genereaza celulele unui tabel, avand ca date de intrare un obiect js creat in lectiile anterioare.
+
+2. Creati alt tabel ce va extinde primul, si care va avea celule editabile. (o celula va fi formata din input-uri).
+
+3. Creati o componenta de search, ce va fi atasata fiecarui tabel construit mai sus, si care va filtra datele din tabel dupa field-ul de "nume". (componenta de search va comunica cu tabelele prin evenimente).

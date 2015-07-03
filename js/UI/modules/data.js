@@ -34,7 +34,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'John Doe',
+                    fullName : 'Ciba Mumu',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -62,7 +62,21 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'John Doe',
+                    fullName : 'Carmen Budau',
+                    jobTitle : "UI Developer",
+                    grade : "Senior Engineer",
+                    allocationStatus : "Allocated",
+                    project : "Trinity Mirror",
+                    date : "10/05/2015",
+                    details: {
+                        'Delivery Unit': 'ISD_Iasi',
+                        'Date of Start': '12/03/2015',
+                        'Line manager' : 'Bogdan Volosincu',
+                        'Project Manager' : 'Andrei Ursache'
+                    }
+                },
+                {
+                    fullName : 'Ciba Mumu',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -90,7 +104,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'John Doe',
+                    fullName : 'Bogdan Volosincu',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -104,7 +118,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'John Doe',
+                    fullName : 'Carmen Budau',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -118,21 +132,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'John Doe',
-                    jobTitle : "UI Developer",
-                    grade : "Senior Engineer",
-                    allocationStatus : "Allocated",
-                    project : "Trinity Mirror",
-                    date : "10/05/2015",
-                    details: {
-                        'Delivery Unit': 'ISD_Iasi',
-                        'Date of Start': '12/03/2015',
-                        'Line manager' : 'Bogdan Volosincu',
-                        'Project Manager' : 'Andrei Ursache'
-                    }
-                },
-                {
-                    fullName : 'John Doe',
+                    fullName : 'Vrinceanu Valentin',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -148,7 +148,35 @@ mio.data =
             ],
             customers = [
                 {
-                    fullName : 'Ciba Mumu',
+                    fullName : 'Vrinceanu Valentin',
+                    jobTitle : "Java Developer",
+                    grade : "Senior Engineer",
+                    allocationStatus : "Allocated",
+                    project : "Trinity Mirror",
+                    date : "10/05/2015",
+                    details: {
+                        'Delivery Unit': 'ISD_Iasi',
+                        'Date of Start': '12/03/2015',
+                        'Line manager' : 'Bogdan Volosincu',
+                        'Project Manager' : 'Andrei Ursache'
+                    }
+                },
+                {
+                    fullName : 'Bogdan Volosincu',
+                    jobTitle : ".NET Developer",
+                    grade : "Senior Engineer",
+                    allocationStatus : "Allocated",
+                    project : "Trinity Mirror",
+                    date : "10/05/2015",
+                    details: {
+                        'Delivery Unit': 'ISD_Iasi',
+                        'Date of Start': '12/03/2015',
+                        'Line manager' : 'Bogdan Volosincu',
+                        'Project Manager' : 'Andrei Ursache'
+                    }
+                },
+                {
+                    fullName : 'Carmen Budau',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -176,7 +204,7 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciba Mumu',
+                    fullName : 'Vrinceanu Valentin',
                     jobTitle : "UI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
@@ -190,36 +218,8 @@ mio.data =
                     }
                 },
                 {
-                    fullName : 'Ciba Mumu',
+                    fullName : 'Bogdan Volosincu',
                     jobTitle : "UI Developer",
-                    grade : "Senior Engineer",
-                    allocationStatus : "Allocated",
-                    project : "Trinity Mirror",
-                    date : "10/05/2015",
-                    details: {
-                        'Delivery Unit': 'ISD_Iasi',
-                        'Date of Start': '12/03/2015',
-                        'Line manager' : 'Bogdan Volosincu',
-                        'Project Manager' : 'Andrei Ursache'
-                    }
-                },
-                {
-                    fullName : 'Ciba Mumu',
-                    jobTitle : "UI Developer",
-                    grade : "Senior Engineer",
-                    allocationStatus : "Allocated",
-                    project : "Trinity Mirror",
-                    date : "10/05/2015",
-                    details: {
-                        'Delivery Unit': 'ISD_Iasi',
-                        'Date of Start': '12/03/2015',
-                        'Line manager' : 'Bogdan Volosincu',
-                        'Project Manager' : 'Andrei Ursache'
-                    }
-                },
-                {
-                    fullName : 'Ciba Mumu',
-                    jobTitle : "UaI Developer",
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
