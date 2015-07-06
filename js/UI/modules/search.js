@@ -9,7 +9,7 @@ mio.modules.search  = (function () {
 
     var listen = function (name, callback) {
         if (!(name in handlers)) {
-          handlers[name] = [];
+            handlers[name] = [];
         }
         handlers[name].push(callback);
     };

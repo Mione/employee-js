@@ -11,7 +11,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2025",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -25,7 +25,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -39,7 +39,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/055/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -53,7 +53,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -67,7 +67,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -81,7 +81,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -95,7 +95,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -109,7 +109,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -123,7 +123,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -137,10 +137,10 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
-                        'Date of Start': '12/03/2015',
+                        'Date of Start': '12/03/2018',
                         'Line manager' : 'Bogdan Volosincu',
                         'Project Manager' : 'Andrei Ursache'
                     }
@@ -153,7 +153,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -167,7 +167,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -181,7 +181,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -195,7 +195,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -209,7 +209,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/06/2015",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',
@@ -223,7 +223,7 @@ mio.data =
                     grade : "Senior Engineer",
                     allocationStatus : "Allocated",
                     project : "Trinity Mirror",
-                    date : "10/05/2015",
+                    dateOfBooking : "10/05/2016",
                     details: {
                         'Delivery Unit': 'ISD_Iasi',
                         'Date of Start': '12/03/2015',

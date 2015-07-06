@@ -100,3 +100,32 @@
   margin-right: 12px;
   box-sizing: border-box;
 }
+.column-found{
+  background-color:coral;
+  border-radius:4px;
+  color:#fff;
+}
+.error {
+  border-radius: 5px;
+  padding: 20px;
+  background-color: coral;
+  margin-bottom: 20px;
+  color: white;
+  display:none;
+}
+.error__close{
+  height: 20px;
+  width: 20px;
+  background-color: red;
+  float: right;
+  border-radius: 10px;
+}
+.loading{
+  background: url('../images/loading.gif') no-repeat center top;
+  width: 1265px;
+  height: 100%;
+  position: absolute;
+  background-color: lightblue;
+  z-index: 11;
+  display:none;
+}

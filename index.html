@@ -115,7 +115,7 @@
 
 
               <span class="table__title">Employees</span>
-              <form class="table-filter">
+              <form class="table-filter table-filter--editable" action = "">
                 <input type="text" name="search-input" class= "search-field--editable" placeholder = "Do a search">
                 <div class="table-filter__lbl-drop">
                   <label >Show:</label>
@@ -129,7 +129,10 @@
               </form><!--//table-filter-->
 							<div class="clearfix"></div>
             <br>
-
+            <div class="error">
+              <span class="error__body">This is the error placeholder</span>
+              <span class= "error__close"></span>
+            </div>
 
 
             <div class="data-tbl editable-table" data-source = "employees" >
@@ -141,9 +144,10 @@
                     <li data-description="grade">Grade</li>
                     <li data-description="allocationStatus">Allocation status</li>
                     <li data-description="project">Project</li>
-                    <li data-description="date">Date of booking</li>
+                    <li data-description="dateOfBooking">Date of booking</li>
                   </ul>
                 </div><!--//data-tbl__header-->
+                <div class="loading"></div>
               </div><!--//table__content-wrapper-->
             </div><!--//data-tbl-->
               
