@@ -36,9 +36,10 @@
   font-size: 0px;
 }
 .data-tbl__header ul {
-  background-color: #e3e3e3;
+  background-color: aliceblue;
   border-bottom: 1px solid gray;
   padding: 10px 0px;
+  border: 1px solid #cecece;
 }
 
 .tbl-row__content.open {
@@ -64,9 +65,7 @@
 .tbl-row__content li ul li {
   padding-left:0px;
 }
-.tbl-row__header li:last-child{
-  width:20%;
-}
+
 .tbl-row__header li:last-child input{
   width:50%;
 }
@@ -128,4 +127,10 @@
   background-color: lightblue;
   z-index: 11;
   display:none;
+}
+.table__footer{
+    margin-top: 10px;
+  border: 1px solid #cecece;
+  padding: 10px;
+  background-color: aliceblue;
 }

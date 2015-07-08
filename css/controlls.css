@@ -38,6 +38,9 @@
   color:#DB532D;
 }
 
+.btn--add-record{
+  width:20%;
+}
 /* ==========================================================================
    The toolbox in the custom table. Since it's not necessarily connected to
    the table and can be moved anywhere, it's been placed here.
@@ -77,6 +80,15 @@ display: inline-block;
   border:1px solid #cecece;
   cursor: pointer;
 
+}
+
+.toolbox__delete{
+  background:url('../images/remove-icon.png') no-repeat center;
+  cursor:pointer;
+}
+
+.toolbox__delete:hover{
+  border: 1px solid #cecece;
 }
 
 .toolbox__arrow--open {

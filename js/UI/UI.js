@@ -5,12 +5,20 @@
         firstSearchForm = document.querySelector('.table-filter'),
         secondSearchForm = document.querySelector('.table-filter--editable'),
         hamburger = document.querySelector('.hamburger__icon'),
-        loader = document.querySelector('.loading');
+        loader = document.querySelector('.loading'),
+        editableInputs,
+        deleteBtns,
+        addBtn = document.querySelector('.btn--add-record');
     mio.config = {};
     mio.tableInstances = [];
-    mio.tableInstances.push(new mio.modules.tableGenerator('.data-tbl'));
+    //mio.tableInstances.push(new mio.modules.tableGenerator('.data-tbl'));
+    //re-populate data, this time with localstorage
+    mio.modules.persistence.init('.editable-table');
     mio.tableInstances.push(new mio.modules.tableGenerator('.editable-table', {editable : true}));
 
+//console.log(editableInput);
+    editableInputs = document.querySelectorAll("[data-editable] > input");
+    deleteBtns = document.querySelectorAll('.toolbox__delete');
     //function declaration
     function coolHandler(word, where, column) {
         var columnIndex = where.headerInfo[column],
@@ -25,6 +33,56 @@
         }
     }
     
+    function createRow(obj, headerInfo, parent){
+      var base = document.createElement('div');
+      base.className = "data-tbl__row";
+      var row = document.createElement('ul');
+      row.className = ("tbl-row__header");
+      row.classList.add('clearfix');
+      var colNr = Object.keys(headerInfo).length;
+      for(var key in headerInfo){
+        var myLi = document.createElement('li'),
+          myInput = document.createElement('input');
+        myLi.setAttribute('data-editable','');
+        myLi.setAttribute('data-row', mio.tableInstances[0].tableData.length-1);
+        myLi.setAttribute('data-column', key);
+        myLi.style.width = 100/ colNr +"%";
+        myInput.type = "text";
+        myInput.placeholder = "Add data";
+        myInput.className = "editable-input";
+        myLi.appendChild(myInput);
+        row.appendChild(myLi);
+        
+      }
+      base.appendChild(row);
+      parent.appendChild(base);
+      console.log(parent)
+    }
+    
+    function inputEdit (e){
+        var parentElement = e.target.parentElement,
+            rowIndex = parentElement.getAttribute('data-row'),
+            rowColumn = parentElement.getAttribute('data-column'),
+            value = e.target.value;
+            //holly... but in the end it's just : select the data we need based on source key (employees), the row index, and the keyname
+          
+        mio.data[mio.modules.persistence.source][rowIndex][rowColumn] = value;
+        mio.modules.persistence.update(mio.modules.persistence.source, mio.data[mio.modules.persistence.source]);
+    }
+
+    function deleteRow (i){
+      return function () {
+        //closures, have your cake, and eat it too
+        var parentElement = deleteBtns[i].parentElement,
+            rowIndex = parentElement.parentElement.getAttribute('data-row');
+        mio.data[mio.modules.persistence.source][rowIndex] = "";
+        //go to the div .data-tbl__row and remove it using the latest dom specification: remove();
+        parentElement.parentElement.parentElement.parentElement.style.display = "none";
+        mio.modules.persistence.update(mio.modules.persistence.source, mio.data[mio.modules.persistence.source]);
+        console.log(mio.data[mio.modules.persistence.source]);
+      };
+    }
+
     //we will be receiving an array following split, for ex: full name,
     //should be able to search for full and for name, as opposed to an exact match "full name"..
     function inHeader(stringArray, table) {
@@ -47,11 +105,11 @@
       }
       return found;
     }
-    
+
     function errorHandler() {
         
     }
-    
+
     function hamburgerClickHandler(ev) {
         var $this = ev.target, itemList = $this.parentElement.getElementsByTagName('ul')[0];
         // || document.querySelector('.nav__hamburger ul');
@@ -63,7 +121,7 @@
             itemList.classList.add('visible-menu');
         }
     }
-    
+
     function throwError(reason){
       var errorPlaceholder = document.querySelector('.error'),
           errorInnerBody = document.querySelector('.error__body');
@@ -73,7 +131,7 @@
           errorPlaceholder.style.display = "none";
       }, 3500);
     }
-    
+
     function validate(string) {
         // validates the string agains common special characters and also checks if we have multiple spaces and replaces
         //them with one.
@@ -93,13 +151,13 @@
         }
         return myString;
     }
-    
+
     function findInHeader (e) {
         var searchWord = validate(e.target.value);
         //inheader will return true but also color the column if found
         if (searchWord) {
-            if (inHeader(searchWord, mio.tableInstances[1])) {
-              return inHeader(searchWord, mio.tableInstances[1]).column;
+            if (inHeader(searchWord, mio.tableInstances[0])) {
+              return inHeader(searchWord, mio.tableInstances[0]).column;
                 //mio.modules.search.trigger('secondSearchEvent', searchWord, mio.tableInstances[1], 'fullName', this);
             }else{
               throwError('key not found in table header');
@@ -109,13 +167,15 @@
         }
         return false;
     }
+
     function showLoader(){
       loader.style.display = "block";
     }
+
     function hideLoader() {
         setTimeout(function(){
             loader.style.display = "none";
-          }, 500);
+          }, 2500);
     }
 
     //event listeners
@@ -151,13 +211,13 @@
                 if (record) {
                   showLoader();
                   hideLoader();
-                  mio.modules.search.trigger('secondSearchEvent', record[0], mio.tableInstances[1], mio.modules.search.column, this);
+                  mio.modules.search.trigger('secondSearchEvent', record[0], mio.tableInstances[0], mio.modules.search.column, this);
                 }
                 else{
                   //we basically have an issue, either can't find the record or the search was done wrong.
                   //should show the error handler and show all table list.
                   throwError('Query incorrect or no records found.');
-                  mio.modules.search.trigger('secondSearchEvent', "", mio.tableInstances[1], mio.modules.search.column, this);
+                  mio.modules.search.trigger('secondSearchEvent', "", mio.tableInstances[0], mio.modules.search.column, this);
                 }
             }
             else{
@@ -167,8 +227,27 @@
       }
     });
     
-    secondSearchForm.addEventListener('keydown', function (e){
-
+    addBtn.addEventListener('click', function (){
+      var root = document.querySelector('.editable-table .table__content-wrapper');
+      var emptyObj = {
+        allocationStatus: "Add data",
+        dateOfBooking: "10/05/2025",
+        details:{"Date of Start": "12/03/2015", "Delivery Unit": "Add data", "Line manager": "Add data", "Project Manager": "Add data"},
+        fullName: "Add data",
+        grade: "Add data",
+        jobTitle: "Add data",
+        project: "Add data"
+        };
+      mio.modules.persistence.add(emptyObj);
+      createRow(emptyObj, mio.tableInstances[0].headerInfo, root);
+    });
+    document.querySelector('body').addEventListener('keyup', function (e) {
+      if (e.target.classList.contains('editable-input')) {
+        inputEdit(e);
+      }
     });
     
+    for(var i = 0; i < deleteBtns.length; i++){
+        deleteBtns[i].addEventListener('click', deleteRow(i));
+    }
 }(mio, document));

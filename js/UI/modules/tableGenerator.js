@@ -95,7 +95,9 @@ mio.modules.tableGenerator =
 
             //set element attribute
             if (elementAttribute) {
-                element.setAttribute(elementAttribute.name, elementAttribute.value);
+              for(var i =0; i < elementAttribute.length; i++){
+                element.setAttribute(elementAttribute[i].name, elementAttribute[i].value);
+              }
             }
 
             //set element value
@@ -148,10 +150,18 @@ mio.modules.tableGenerator =
                           myInput;                
                       var myLi = this.createDomElement({
                         elementType: 'li',
-                        elementAttribute: {
+                        elementAttribute: [{
                           name: 'data-editable',
                           value: ''
                         },
+                        {
+                          name: 'data-row',
+                          value : i
+                        },
+                        {
+                          name: 'data-column',
+                          value : key
+                        }],
                         elementValue: elementValue
                       });
                       
@@ -159,7 +169,8 @@ mio.modules.tableGenerator =
                           if (this.options.editable === true) {
                             myInput = this.createDomElement({
                               elementType: 'input',
-                              elementValue: elementValue
+                              elementValue: elementValue,
+                              elementClassList: 'editable-input'
                             });
                             myInput.type = "text";
                             myInput.value = elementValue;
@@ -173,7 +184,7 @@ mio.modules.tableGenerator =
               baseheaderLen  = baseheader.children.length;
               lastColumn = baseheader.children[baseheaderLen - 1];
               lastColumn.classList.add('toolbox');
-              this.createToolbox(lastColumn);
+              this.createToolbox(lastColumn, i);
 
               //let's build the table row hidden content
               for(var key in objectList[i].details) {
@@ -210,8 +221,8 @@ mio.modules.tableGenerator =
               return startElement;
         };
 
-        myApp.prototype.createToolbox = function (parent) {
-              var toolboxControlls = '<span class="toolbox__pencil"></span>' + '<span class="toolbox__arrow toolbox__arrow--closed"></span>',
+        myApp.prototype.createToolbox = function (parent, rowIndex) {
+              var toolboxControlls = '<span class = "toolbox__delete" data-row = '+rowIndex+'></span><span class="toolbox__arrow toolbox__arrow--closed"></span>',
                   toolbox;
               toolbox = this.createDomElement({
                   elementType: 'div',

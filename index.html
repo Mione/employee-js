@@ -82,8 +82,8 @@
 							</div><!--//search__wrapper-->
             </section><!--//section-->      
           <main>
-              <span class="table__title">Customers</span>
-              <form class="table-filter">
+              <span class="table__title hidden">Customers</span>
+              <form class="table-filter hidden">
                 <input type="text" name="search-input" class = "search-field"placeholder = "Do a search">
                 <div class="table-filter__lbl-drop">
                   <label >Show:</label>
@@ -98,7 +98,7 @@
 							<div class="clearfix"></div>
             <br>
 
-              <div class="data-tbl" data-source = "customers" >
+              <div class="data-tbl hidden" data-source = "customers" >
                 <div class="table__content-wrapper">
                   <div class = "data-tbl__header">
                     <ul>
@@ -133,8 +133,6 @@
               <span class="error__body">This is the error placeholder</span>
               <span class= "error__close"></span>
             </div>
-
-
             <div class="data-tbl editable-table" data-source = "employees" >
               <div class="table__content-wrapper">
                 <div class = "data-tbl__header">
@@ -149,6 +147,9 @@
                 </div><!--//data-tbl__header-->
                 <div class="loading"></div>
               </div><!--//table__content-wrapper-->
+              <div class="table__footer">
+                <button class = "btn btn--add-record">Add new record</button>
+              </div>
             </div><!--//data-tbl-->
               
             <div class="pagination">
@@ -175,8 +176,8 @@
         <script src = "js/main.js"></script>
         <script src = "js/UI/modules/data.js"></script>
         <script src = "js/UI/modules/tableGenerator.js"></script>
+        <script src = "js/UI/modules/persistence.js"></script>
         <script src = "js/UI/modules/search.js"></script>
-        
         <script src="js/UI/UI.js"></script>
     </body>
 </html>

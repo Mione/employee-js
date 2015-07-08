@@ -7,8 +7,9 @@
 }
 
 .container > section {
-	background-color: #E3E3E3;
+  background-color: aliceblue;
   margin-bottom: 30px;
+  border-bottom: 1px solid #cecece;
 }
 
 .container > main {
