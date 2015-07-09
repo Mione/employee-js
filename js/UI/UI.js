@@ -32,7 +32,7 @@
           }
         }
     }
-    
+
     function createRow(obj, headerInfo, parent){
       var base = document.createElement('div');
       base.className = "data-tbl__row";
@@ -52,20 +52,17 @@
         myInput.className = "editable-input";
         myLi.appendChild(myInput);
         row.appendChild(myLi);
-        
       }
       base.appendChild(row);
       parent.appendChild(base);
-      console.log(parent)
     }
-    
+
     function inputEdit (e){
         var parentElement = e.target.parentElement,
             rowIndex = parentElement.getAttribute('data-row'),
             rowColumn = parentElement.getAttribute('data-column'),
             value = e.target.value;
             //holly... but in the end it's just : select the data we need based on source key (employees), the row index, and the keyname
-          
         mio.data[mio.modules.persistence.source][rowIndex][rowColumn] = value;
         mio.modules.persistence.update(mio.modules.persistence.source, mio.data[mio.modules.persistence.source]);
     }
@@ -104,10 +101,6 @@
         }
       }
       return found;
-    }
-
-    function errorHandler() {
-        
     }
 
     function hamburgerClickHandler(ev) {

@@ -23,7 +23,7 @@ mio.modules.tableGenerator =
                 this.selector = document;
                 this.dataTable = this.selector.querySelector('.table__content-wrapper');
             }
-            
+
             this.dataSource = this.getDataSource(this.tableRoot);
             this.tableData = mio.data[this.dataSource];
             this.headerInfo = this.getTblHeaderInfo();
@@ -40,10 +40,6 @@ mio.modules.tableGenerator =
 
             this.dataTable.addEventListener('click', this.toolboxClickHandler.bind(this));
         };
-
-        myApp.prototype.init = function () {
-          
-        }
 
         myApp.prototype.getDataSource = function (container) {
             var returnSource = container.getAttribute('data-source');
@@ -63,148 +59,98 @@ mio.modules.tableGenerator =
         };
 
         myApp.prototype.createDomElement = function (options) {
-
-            //variables
-            var elementType, elementClassList, elementAttribute, elementValue, parentSelectorName, element, parentSelectors;
-            elementType = options.elementType;
-            elementClassList = options.elementClassList;
-            elementAttribute = options.elementAttribute;
-            elementValue = options.elementValue;
-            parentSelectorName = options.parentSelector;
-            element = document.createElement(elementType);
-
+            var element,
+                parentSelectors;
+            element = document.createElement(options.elementType);
             //create the actual element
-            if (typeof parentSelectorName === 'string') {
-                parentSelectors = document.querySelectorAll(parentSelectorName);
+            if (typeof options.parentSelectorName === 'string') {
+                parentSelectors = document.querySelectorAll(options.parentSelectorName);
             } else {
-                parentSelectors = parentSelectorName;
+                parentSelectors = options.parentSelectorName;
             }
             //add class list if array and single class otherwise, no class of undefined
-            if (elementClassList) {
-                if (elementClassList.constructor === Array) {
-                    var index;
-                    for (index in elementClassList) {
-                        if (!element.classList.contains(elementClassList[index])) {
-                            element.classList.add(elementClassList[index]);
+            if (options.elementClassList) {
+                if (options.elementClassList.constructor === Array) {
+                    for (var index in options.elementClassList) {
+                        if (!element.classList.contains(options.elementClassList[index])) {
+                            element.classList.add(options.elementClassList[index]);
                         }
                     }
                 } else {
-                    element.classList.add(elementClassList);
+                    element.classList.add(options.elementClassList);
                 }
             }
-
-            //set element attribute
-            if (elementAttribute) {
-              for(var i =0; i < elementAttribute.length; i++){
-                element.setAttribute(elementAttribute[i].name, elementAttribute[i].value);
+            if (options.elementAttribute) {
+              for(var attrIndex in options.elementAttribute){
+                  if (options.elementAttribute[attrIndex].hasOwnProperty) {
+                        element.setAttribute(options.elementAttribute[attrIndex].name, options.elementAttribute[attrIndex].value);
+                  }
               }
             }
+            if (options.elementValue){
+              if (options.elementType === 'input') {
+                  console.log(element);
+                  console.log(options.elementValue);
+              }
+              options.elementType === 'input'? element.value = options.elementValue : element.innerHTML = options.elementValue;
 
-            //set element value
-            if (elementValue) {
-                element.innerHTML = elementValue;
             }
-
-            //append element to all parents
             if (parentSelectors) {
                 if (parentSelectors.length > 0) {
-                    var i;
-                    for (i = 0; i < parentSelectors.length; i = i + 1) {
+                    for (var i = 0; i < parentSelectors.length; i = i + 1) {
                         parentSelectors[i].appendChild(element);
                     }
                 } else {
                     parentSelectors.appendChild(element);
                 }
             } else {
-
                 //in this case no parent given, so it's safe to assume we'll need to return the element
                 return element;
             }
             return false;
         };
 
-        myApp.prototype.generateData = function (objectList, headerInfo) {
-            var baseheaderLen, lastColumn;
-            for (var i = 0; i < objectList.length; i++) {
-              var base = this.createDomElement({
-                  elementType: 'div',
-                  elementClassList: 'data-tbl__row'
-                }), baseheader = this.createDomElement({
-                  elementType: 'ul',
-                  elementClassList: [
-                    'tbl-row__header',
-                    'clearfix'
-                  ]
-                }), baseContent = this.createDomElement({
-                  elementType: 'ul',
-                  elementClassList: [
-                    'tbl-row__content',
-                    'closed'
-                  ]
-                });
+        myApp.prototype.createColumn = function (headerInfo, obj, index, key){
+            var elementValue = obj,
+                myInput;
+            var myLi = this.createDomElement({
+              elementType: 'li',
+              elementAttribute:[{name: 'data-editable', value: ''}, {name: 'data-row', value : index}, {name: 'data-column', value : key}]
+            });
+            myInput = this.createDomElement({
+              elementType: 'input',
+              elementValue: elementValue[key],
+              elementClassList: 'editable-input',
+              elementAttribute: {name: 'type', value: 'text'}
+              });
 
-              //let's build the table row header
-              for (var key in headerInfo) {
-                  if (key) {
-                      var elementValue = objectList[i][key],
-                          myInput;                
-                      var myLi = this.createDomElement({
-                        elementType: 'li',
-                        elementAttribute: [{
-                          name: 'data-editable',
-                          value: ''
-                        },
-                        {
-                          name: 'data-row',
-                          value : i
-                        },
-                        {
-                          name: 'data-column',
-                          value : key
-                        }],
-                        elementValue: elementValue
-                      });
-                      
-                      if (this.options) {
-                          if (this.options.editable === true) {
-                            myInput = this.createDomElement({
-                              elementType: 'input',
-                              elementValue: elementValue,
-                              elementClassList: 'editable-input'
-                            });
-                            myInput.type = "text";
-                            myInput.value = elementValue;
-                            myLi.childNodes[0].textContent = "";
-                            myLi.appendChild(myInput);
-                          }
-                      }
-                      baseheader.appendChild(myLi);
-                }
-              }
-              baseheaderLen  = baseheader.children.length;
-              lastColumn = baseheader.children[baseheaderLen - 1];
-              lastColumn.classList.add('toolbox');
-              this.createToolbox(lastColumn, i);
+            myLi.appendChild(myInput);
+            return myLi;
+        };
 
-              //let's build the table row hidden content
-              for(var key in objectList[i].details) {
-                  if (key) {
-                      var myHiddenLi = this.createDomElement({
-                        elementType: 'li',
-                        elementAttribute: {
-                          name: 'data-editable',
-                          value: ''
-                        },
-                        elementValue:'<span class = \'key \'>' + key + ':&nbsp;</span>' + '<span class=\'value\'>'+objectList[i].details[key]+'</span>'
-                      });
-                      baseContent.appendChild(myHiddenLi);
+        myApp.prototype.createRow = function (rowsObject, columnStructure, parent){
+              var that = this,
+                  lastColumn;
+              rowsObject.filter(function (obj, index){
+                var rowBase = that.createDomElement({elementType: 'div', elementClassList: 'data-tbl__row'}),
+                    rowVisibleData = that.createDomElement({elementType: 'ul', elementClassList: ['tbl-row__header','clearfix' ]});
+                    //not doing this one for now.
+                    //rowHiddenData = this.createDomElement({elementType: 'ul', elementClassList: ['tbl-row__content','closed']});
+                for(var key in columnStructure){
+                  if (columnStructure.hasOwnProperty(key)) {
+                      rowVisibleData.appendChild(that.createColumn(columnStructure, obj, index, key));
                   }
-              }
-              
-              base.appendChild(baseheader);
-              base.appendChild(baseContent);
-              this.dataTable.appendChild(base);
-            }
+                }
+                lastColumn = rowVisibleData.lastChild;
+                lastColumn.classList.add('toolbox');
+                that.createToolbox(lastColumn, index);
+                rowBase.appendChild(rowVisibleData);
+                parent.appendChild(rowBase);
+              });
+        };
+
+        myApp.prototype.generateData = function (objectList, headerInfo) {
+              this.createRow(objectList, headerInfo, this.dataTable);
         };
 
         myApp.prototype.getTblHeaderInfo = function () {
