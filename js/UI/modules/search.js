@@ -3,10 +3,7 @@ var mio = mio || {};
 mio.modules.search  = (function () {
     'use strict';
 
-    var handlers = {},
-        searchWhere,
-        searchWhat;
-
+    var handlers = {};
     var listen = function (name, callback) {
         if (!(name in handlers)) {
             handlers[name] = [];

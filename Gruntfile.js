@@ -9,7 +9,7 @@ module.exports = function (grunt) {
                 banner : '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             build : {
-                src : 'js/**/*.js',
+                src : ['js/main.js', 'js/UI/modules/data.js', 'js/UI/modules/tableGenerator.js', 'js/UI/modules/persistence.js', 'js/UI/modules/search.js', 'js/UI/UI.js'],
                 dest : 'build/js/<%= pkg.name %>.min.js'
             }
         },
@@ -23,7 +23,7 @@ module.exports = function (grunt) {
             }
         },
         jshint: {
-            files: ['Gruntfile.js', 'js/UI/*.js'],
+            files: ['Gruntfile.js', 'js/UI/**/*.js'],
             options: {
                 globals: {
                     jQuery: true

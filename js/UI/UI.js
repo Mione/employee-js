@@ -1,28 +1,26 @@
+/*global console mio*/
+
 (function (mio, document) {
     'use strict';
     //var declaration
-    var mio = mio || {},
-        firstSearchForm = document.querySelector('.table-filter'),
-        secondSearchForm = document.querySelector('.table-filter--editable'),
-        hamburger = document.querySelector('.hamburger__icon'),
-        loader = document.querySelector('.loading'),
-        editableInputs,
-        deleteBtns,
-        addBtn = document.querySelector('.btn--add-record');
-    mio.config = {};
-    mio.tableInstances = [];
-    //mio.tableInstances.push(new mio.modules.tableGenerator('.data-tbl'));
-    //re-populate data, this time with localstorage
-    mio.modules.persistence.init('.editable-table');
-    mio.tableInstances.push(new mio.modules.tableGenerator('.editable-table', {editable : true}));
+    mio = mio || {};
+    var firstSearchForm = document.querySelector('.table-filter');
+    var secondSearchForm = document.querySelector('.table-filter--editable');
+    var hamburger = document.querySelector('.hamburger__icon');
+    var loader = document.querySelector('.loading');
+    var editableInputs;
+    var deleteBtns;
+    var addBtn = document.querySelector('.btn--add-record');
 
-//console.log(editableInput);
+    mio.modules.persistence.init('.editable-table');
+    mio.modules.tableGenerator.init('.editable-table');
+    //assigning these after they are generated;
     editableInputs = document.querySelectorAll("[data-editable] > input");
     deleteBtns = document.querySelectorAll('.toolbox__delete');
+    
     //function declaration
     function coolHandler(word, where, column) {
-        var columnIndex = where.headerInfo[column],
-            rows = where.tableRoot.querySelectorAll('.data-tbl__row');
+        var rows = where.tableRoot.querySelectorAll('.data-tbl__row');
         for (var i = 0; i <where.tableData.length;i++){
           if (where.tableData[i][column].toLowerCase().indexOf(word.toLowerCase()) !== -1) {
               rows[i].style.display = "block";
@@ -31,30 +29,6 @@
             rows[i].style.display = "none";
           }
         }
-    }
-
-    function createRow(obj, headerInfo, parent){
-      var base = document.createElement('div');
-      base.className = "data-tbl__row";
-      var row = document.createElement('ul');
-      row.className = ("tbl-row__header");
-      row.classList.add('clearfix');
-      var colNr = Object.keys(headerInfo).length;
-      for(var key in headerInfo){
-        var myLi = document.createElement('li'),
-          myInput = document.createElement('input');
-        myLi.setAttribute('data-editable','');
-        myLi.setAttribute('data-row', mio.tableInstances[0].tableData.length-1);
-        myLi.setAttribute('data-column', key);
-        myLi.style.width = 100/ colNr +"%";
-        myInput.type = "text";
-        myInput.placeholder = "Add data";
-        myInput.className = "editable-input";
-        myLi.appendChild(myInput);
-        row.appendChild(myLi);
-      }
-      base.appendChild(row);
-      parent.appendChild(base);
     }
 
     function inputEdit (e){
@@ -67,17 +41,14 @@
         mio.modules.persistence.update(mio.modules.persistence.source, mio.data[mio.modules.persistence.source]);
     }
 
-    function deleteRow (i){
-      return function () {
+    function deleteRow (e){
         //closures, have your cake, and eat it too
-        var parentElement = deleteBtns[i].parentElement,
+        var parentElement = e.parentElement,
             rowIndex = parentElement.parentElement.getAttribute('data-row');
         mio.data[mio.modules.persistence.source][rowIndex] = "";
         //go to the div .data-tbl__row and remove it using the latest dom specification: remove();
         parentElement.parentElement.parentElement.parentElement.style.display = "none";
         mio.modules.persistence.update(mio.modules.persistence.source, mio.data[mio.modules.persistence.source]);
-        console.log(mio.data[mio.modules.persistence.source]);
-      };
     }
 
     //we will be receiving an array following split, for ex: full name,
@@ -149,8 +120,8 @@
         var searchWord = validate(e.target.value);
         //inheader will return true but also color the column if found
         if (searchWord) {
-            if (inHeader(searchWord, mio.tableInstances[0])) {
-              return inHeader(searchWord, mio.tableInstances[0]).column;
+            if (inHeader(searchWord, mio.modules.tableGenerator.getHeaderInfo(document.querySelector('.editable-table')))) {
+              return inHeader(searchWord, mio.modules.tableGenerator.getHeaderInfo(document.querySelector('.editable-table'))).column;
                 //mio.modules.search.trigger('secondSearchEvent', searchWord, mio.tableInstances[1], 'fullName', this);
             }else{
               throwError('key not found in table header');
@@ -168,7 +139,7 @@
     function hideLoader() {
         setTimeout(function(){
             loader.style.display = "none";
-          }, 2500);
+          }, 1500);
     }
 
     //event listeners
@@ -196,7 +167,6 @@
             mio.modules.search.column = findInHeader(e);
         }
         if (e.keyCode === 13) {
-          //as it turns out preventDefault here does nothing :|
             if (mio.modules.search.column) {
                 var record = e.target.value.substring(e.target.value.indexOf(':'));
                 record = validate(record);
@@ -219,7 +189,7 @@
         }
       }
     });
-    
+
     addBtn.addEventListener('click', function (){
       var root = document.querySelector('.editable-table .table__content-wrapper');
       var emptyObj = {
@@ -231,16 +201,21 @@
         jobTitle: "Add data",
         project: "Add data"
         };
+      var dataSource = mio.modules.tableGenerator.getDataSource(document.querySelector('.editable-table'));
       mio.modules.persistence.add(emptyObj);
-      createRow(emptyObj, mio.tableInstances[0].headerInfo, root);
+      mio.modules.tableGenerator.createRow(emptyObj, mio.modules.tableGenerator.getHeaderInfo(document.querySelector('.editable-table')), root, mio.data[dataSource].length-1);
     });
+
     document.querySelector('body').addEventListener('keyup', function (e) {
       if (e.target.classList.contains('editable-input')) {
         inputEdit(e);
       }
     });
     
-    for(var i = 0; i < deleteBtns.length; i++){
-        deleteBtns[i].addEventListener('click', deleteRow(i));
-    }
+    document.querySelector('body').addEventListener('click', function (e){
+      if (e.target.classList.contains('toolbox__delete')) {
+        deleteRow(e.target);
+      }
+      
+    });
 }(mio, document));

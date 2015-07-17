@@ -14,7 +14,7 @@ mio.modules.persistence = (function (document, localStorage, console) {
 /* ==========================================================================
    Public functions
    ========================================================================== */
-    function init(tableContainer) {
+    var init = function (tableContainer) {
         //get data either from html or default to employees
         //wrong way to do it, no dom interaction should be here, will need to refactor
         var dataSource = document.querySelector(tableContainer).getAttribute('data-source') || 'employees',
@@ -26,21 +26,19 @@ mio.modules.persistence = (function (document, localStorage, console) {
             //the data is there, so we just need to parse it and populate the data module.
             temp = JSON.parse(lsData);
             for(var i=0; i < temp.length; i++){
-              if (temp[i] != '') {
+              if (temp[i] !== '') {
                 parsedData.push(temp[i]);
               }
             }
-            console.log(parsedData)
             mio.data[dataSource] = parsedData;
         } else {
             dataFromJs(dataSource, mio.data[dataSource]);
         }
-    }
+    };
 
     function add(obj) {
-      mio.data[this.source].push(obj);
-      console.log(mio.data[this.source])
-      dataFromJs(this.source, mio.data[this.source]);
+        mio.data[init.source].push(obj);
+        dataFromJs(init.source, mio.data[init.source]);
     }
 
     function remove(obj) {

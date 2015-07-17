@@ -7,58 +7,40 @@ var mio = mio || {};
 mio.modules.tableGenerator =
     (function (document) {
         'use strict';
-        var myApp = function (myTable, options) {
-            if (myTable) {
-                this.selector = document.querySelector(myTable);
-            } else {
-                this.selector = document;
-            }
 
-            //constructor variables
-            this.options = options;
-            this.tableRoot = document.querySelector(myTable) || document.querySelector('.data-tbl');
-            try {
-                this.dataTable = this.selector.querySelector('.table__content-wrapper');
-            } catch (e) {
-                this.selector = document;
-                this.dataTable = this.selector.querySelector('.table__content-wrapper');
-            }
+        function init(myTable) {
+            var tableRoot = document.querySelector(myTable) || document.querySelector('.data-tbl');
+            var dataTable = tableRoot.querySelector('.table__content-wrapper');
+            var dataSource = getDataSource(tableRoot);
+            var tableData = mio.data[dataSource];
+            var headerInfo = getTblHeaderInfo(tableRoot);
+            bindEvents(tableData, headerInfo, dataTable, tableRoot);
+        }
 
-            this.dataSource = this.getDataSource(this.tableRoot);
-            this.tableData = mio.data[this.dataSource];
-            this.headerInfo = this.getTblHeaderInfo();
-            this.generateData(this.tableData, this.headerInfo);
-            this.resizeColumns(this.headerInfo);
-            //events
+        function bindEvents (tableData, headerInfo, dataTable, tableRoot){
+            generateData(tableData, headerInfo, dataTable);
+            resizeColumns(headerInfo, tableRoot);
+            dataTable.addEventListener('click', toolboxClickHandler);
+        }
 
-            this.config = {
-                tableRoot : document.querySelector(myTable) || document.querySelector('.data-tbl'),
-                options : options,
-                dataSource : this.getDataSource(this.tableRoot),
-                tableData : mio.data[this.dataSource]
-            };
-
-            this.dataTable.addEventListener('click', this.toolboxClickHandler.bind(this));
-        };
-
-        myApp.prototype.getDataSource = function (container) {
+        function getDataSource (container) {
             var returnSource = container.getAttribute('data-source');
             if (returnSource) {
                 return returnSource;
             }
             return 'employees';
-        };
+        }
 
-        myApp.prototype.resizeColumns = function (number) {
+        function resizeColumns (number, tableRoot) {
             var len, columns, i;
             len = Object.keys(number).length;
-            columns = this.selector.querySelectorAll('.tbl-row__header li, .data-tbl__header li');
+            columns = tableRoot.querySelectorAll('.tbl-row__header li, .data-tbl__header li');
             for (i = 0; i < columns.length; i = i + 1) {
                 columns[i].style.width = 100 / len + "%";
             }
-        };
+        }
 
-        myApp.prototype.createDomElement = function (options) {
+        function createDomElement (options) {
             var element,
                 parentSelectors;
             element = document.createElement(options.elementType);
@@ -89,14 +71,13 @@ mio.modules.tableGenerator =
             }
             if (options.elementValue){
               if (options.elementType === 'input') {
-                  console.log(element);
-                  console.log(options.elementValue);
+                  element.value = options.elementValue;
+              } else{
+               element.innerHTML = options.elementValue;
               }
-              options.elementType === 'input'? element.value = options.elementValue : element.innerHTML = options.elementValue;
-
             }
             if (parentSelectors) {
-                if (parentSelectors.length > 0) {
+                if (parentSelectors.length > 1) {
                     for (var i = 0; i < parentSelectors.length; i = i + 1) {
                         parentSelectors[i].appendChild(element);
                     }
@@ -108,87 +89,86 @@ mio.modules.tableGenerator =
                 return element;
             }
             return false;
-        };
+        }
 
-        myApp.prototype.createColumn = function (headerInfo, obj, index, key){
-            var elementValue = obj,
-                myInput;
-            var myLi = this.createDomElement({
+        function createColumn (obj, index, key){
+            var elementValue = obj;
+            var myInput;
+
+            var myLi = createDomElement({
               elementType: 'li',
               elementAttribute:[{name: 'data-editable', value: ''}, {name: 'data-row', value : index}, {name: 'data-column', value : key}]
             });
-            myInput = this.createDomElement({
+
+            myInput = createDomElement({
               elementType: 'input',
               elementValue: elementValue[key],
               elementClassList: 'editable-input',
-              elementAttribute: {name: 'type', value: 'text'}
+              elementAttribute: [{name: 'type', value: 'text'}]
               });
 
             myLi.appendChild(myInput);
             return myLi;
-        };
+        }
 
-        myApp.prototype.createRow = function (rowsObject, columnStructure, parent){
-              var that = this,
-                  lastColumn;
-              rowsObject.filter(function (obj, index){
-                var rowBase = that.createDomElement({elementType: 'div', elementClassList: 'data-tbl__row'}),
-                    rowVisibleData = that.createDomElement({elementType: 'ul', elementClassList: ['tbl-row__header','clearfix' ]});
-                    //not doing this one for now.
-                    //rowHiddenData = this.createDomElement({elementType: 'ul', elementClassList: ['tbl-row__content','closed']});
+        function createRow (obj, columnStructure, parent, index){
+              var rowBase = createDomElement({elementType: 'div', elementClassList: 'data-tbl__row'});
+              var rowVisibleData = createDomElement({elementType: 'ul', elementClassList: ['tbl-row__header','clearfix' ]});
+
+                //rowHiddenData = this.createDomElement({elementType: 'ul', elementClassList: ['tbl-row__content','closed']});
                 for(var key in columnStructure){
                   if (columnStructure.hasOwnProperty(key)) {
-                      rowVisibleData.appendChild(that.createColumn(columnStructure, obj, index, key));
+                      rowVisibleData.appendChild(createColumn(obj, index, key));
                   }
                 }
-                lastColumn = rowVisibleData.lastChild;
-                lastColumn.classList.add('toolbox');
-                that.createToolbox(lastColumn, index);
+
+                createToolbox(rowVisibleData.lastChild, index);
                 rowBase.appendChild(rowVisibleData);
                 parent.appendChild(rowBase);
+        }
+
+        function generateData (objectList, headerInfo, tableContent) {
+              objectList.filter(function (obj, index){
+                  createRow(obj, headerInfo, tableContent, index);
               });
-        };
+        }
 
-        myApp.prototype.generateData = function (objectList, headerInfo) {
-              this.createRow(objectList, headerInfo, this.dataTable);
-        };
-
-        myApp.prototype.getTblHeaderInfo = function () {
+        function getTblHeaderInfo (tableRoot) {
               //we need to link the value and the order with the table header.
-              var headerWrapper = this.selector.querySelector('.data-tbl__header ul'), headerInfo = {};
+              var headerWrapper = tableRoot.querySelector('.data-tbl__header ul'), headerInfo = {};
               for (var i = 0; i < headerWrapper.children.length; i++) {
                 headerInfo[headerWrapper.children[i].getAttribute('data-description')] = i;
               }
               return headerInfo;
-        };
+        }
 
-        myApp.prototype.findParent = function (startElement, targetParentClass) {
+        function findParent (startElement, targetParentClass) {
               while((startElement = startElement.parentElement) && !startElement.classList.contains(targetParentClass)){}
               return startElement;
-        };
+        }
 
-        myApp.prototype.createToolbox = function (parent, rowIndex) {
+        function createToolbox (parent, rowIndex) {
               var toolboxControlls = '<span class = "toolbox__delete" data-row = '+rowIndex+'></span><span class="toolbox__arrow toolbox__arrow--closed"></span>',
                   toolbox;
-              toolbox = this.createDomElement({
+              toolbox = createDomElement({
                   elementType: 'div',
                   elementClassList: 'toolbox__controlls',
                   elementValue: toolboxControlls,
-                  parentSelector: parent
+                  parentSelectorName: parent
                 });
-        };
+              parent.classList.add('toolbox');
+        }
 
-        myApp.prototype.toolboxClickHandler = function (ev, secDiv) {
+        function toolboxClickHandler (ev, secDiv) {
               if (ev.target.classList.contains('toolbox__arrow')) {
-                var parent = this.findParent(ev.target, 'data-tbl__row'),
+                var parent = findParent(ev.target, 'data-tbl__row'),
                   rowDetails = parent.children[1];
-                  this.toggleRowDetails(rowDetails, ev.target);
+                  toggleRowDetails(rowDetails, ev.target);
                 ev.stopPropagation();
               }
-        };
+        }
 
-        myApp.prototype.toggleRowDetails = function (element, clickedArrow) {
-        
+        function toggleRowDetails (element, clickedArrow) {
               if (clickedArrow.classList.contains('toolbox__arrow--closed')) {
                   clickedArrow.classList.remove('toolbox__arrow--closed');
                   clickedArrow.classList.add('toolbox__arrow--open');
@@ -201,8 +181,16 @@ mio.modules.tableGenerator =
                   element.classList.add('closed');
                   element.classList.remove('open');
               }
-        };
-                
-        return myApp;
+        }
+        return {
+          init:init,
+          generateData: generateData,
+          createRow: createRow,
+          getHeaderInfo : getTblHeaderInfo,
+          createToolbox : createToolbox,
+          findParent : findParent,
+          createColumn : createColumn,
+          getDataSource : getDataSource
+          };
 
 }(window.document));
